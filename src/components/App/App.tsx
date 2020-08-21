@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import styles from './App.module.css';
 import { useDispatch } from 'react-redux';
-import { getWeatherTC } from '../../redux/reducers';
+import { getWeatherTC } from '../../redux/weather-reducer';
+import { Typeahead } from '@gforge/react-typeahead-ts';
+import { getCitiesTC } from '../../redux/cities-reducer';
 
 function App() {
 
+	const [citySelected, setCitySelected] = useState('');
 	const dispatch = useDispatch();
 
-	const getWeather = (e: string) => {
+	const getWeather = useCallback((e: any) => {
+		// dispatch(getWeatherTC(e));
+		console.log(e)
 		dispatch(getWeatherTC(e));
-	};
+		setCitySelected(e)
+	}, [citySelected, setCitySelected]);
+
+	const getWeatherOne = useCallback((e: any) => {
+		dispatch(getWeatherTC(e));
+	}, [dispatch]);
 
   return (
     <div className={styles.App}>
       <header className={styles.AppHeader}>
-				<input type="text" onChange={(e) => getWeather(e.currentTarget.value)}/>
+				<input type="text" onChange={(e) => getWeatherOne(e.currentTarget.value)}/>
+				<Typeahead options={['Moscow', 'Minsk', 'Kirov', 'Monaco']} value={citySelected} onOptionSelected={getWeather} />
+				<button onClick={() => dispatch(getCitiesTC())}>get cities</button>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
