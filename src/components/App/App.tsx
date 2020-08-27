@@ -15,16 +15,16 @@ function App() {
 		console.log(e)
 		dispatch(getWeatherTC(e));
 		setCitySelected(e)
-	}, [citySelected, setCitySelected]);
+	}, [setCitySelected, dispatch]);
 
-	const getWeatherOne = useCallback((e: any) => {
-		dispatch(getWeatherTC(e));
+	const getWeatherOne = useCallback((e: React.FormEvent<HTMLInputElement>) => {
+		dispatch(getWeatherTC(e.currentTarget.value));
 	}, [dispatch]);
 
   return (
     <div className={styles.App}>
       <header className={styles.AppHeader}>
-				<input type="text" onChange={(e) => getWeatherOne(e.currentTarget.value)}/>
+				<input type="text" onChange={getWeatherOne}/>
 				<Typeahead options={['Moscow', 'Minsk', 'Kirov', 'Monaco']} value={citySelected} onOptionSelected={getWeather} />
 				<button onClick={() => dispatch(getCitiesTC())}>get cities</button>
         <p>
