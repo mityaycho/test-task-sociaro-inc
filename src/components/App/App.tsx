@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import styles from './App.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getWeatherTC } from '../../redux/weather-reducer';
 import { Typeahead } from '@gforge/react-typeahead-ts';
 import { getCitiesTC } from '../../redux/cities-reducer';
@@ -11,6 +11,7 @@ function App() {
 
 	const [citySelected, setCitySelected] = useState('');
 	const dispatch = useDispatch();
+	const findCities = useSelector((state: any) => state.citiesState.cities)
 
 	const getWeather = useCallback((e: any) => {
 		console.log(e)
@@ -30,7 +31,7 @@ function App() {
 				
       </section>
 			<input type="text" onChange={getWeatherOne}/>
-				<Typeahead options={['Moscow', 'Minsk', 'Kirov', 'Monaco']} value={citySelected} onOptionSelected={getWeather} />
+				<Typeahead options={findCities} value={citySelected} onOptionSelected={getWeather} />
 				<button onClick={() => dispatch(getCitiesTC('moscow'))}>get cities</button>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.

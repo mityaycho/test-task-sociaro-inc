@@ -1,9 +1,13 @@
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { weatherReducer } from './weather-reducer';
+import { citiesReducer } from './cities-reducer';
 
 
-const reducers = combineReducers({ weatherState: weatherReducer });
+const reducers = combineReducers({ 
+	weatherState: weatherReducer,
+	citiesState: citiesReducer
+ });
 
 declare global {
   interface Window {

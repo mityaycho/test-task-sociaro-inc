@@ -1,17 +1,22 @@
-import { GET_WEATHER, ActionsType } from "./actions";
 import { api } from "../api/apiFunc";
 import { Dispatch } from 'redux';
+import { GET_CITIES, citiesReducerAC } from "./actions";
 
 
 
-const initialState = {};
+const initialState = {
+	cities: [{
+		name: 'Moscow',
+		country: 'RU'
+	}]
+};
 
-export const weatherReducer = (state = initialState, action: ActionsType) => {
+export const citiesReducer = (state = initialState, action: any) => {
 
 	switch (action.type) {
-		case GET_WEATHER:
+		case GET_CITIES:
 			return {
-				...state
+				...state, cities: [...action.findCities]
 			};
 
 		default:
@@ -23,8 +28,9 @@ export const getCitiesTC = (cityName: string) => async (dispatch: Dispatch) => {
 	try {
 		
 			const response = await api.getCities(cityName);
-			console.log(response.data.list.map((el: any) => el.name))
-		
+			console.log(response.data.list.map((el: any) => ({name: el.name, country: el.sys.country})));
+			const findCities = response.data.list.map((el: any) => (el.name));
+		dispatch(citiesReducerAC(findCities))
 	} catch (error) {
 		return error;
 	}
