@@ -1,4 +1,3 @@
-
 import { instance, apiKey } from './api';
 import citiesJson from '../assets/cities/city.list.json'
 

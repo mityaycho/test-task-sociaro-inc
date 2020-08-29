@@ -1,0 +1,19 @@
+.header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-size: cover;
+	width: 375px;
+	height: 300px;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.day {
+	background-image: url('./../../assets/images/background-day.png');
+}
+
+.night {
+	background-image: url('./../../assets/images/background-night.png');
+}

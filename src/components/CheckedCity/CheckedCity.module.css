@@ -1,0 +1,50 @@
+.checkedCity {
+	position: absolute;
+	width: 375px;
+	height: 531px;
+	left: 0px;
+	top: 279px;
+	border-radius: 23px 23px 0 0;
+
+	background: #FFFFFF;
+	box-shadow: 0px -16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.infoHead {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	height: 48px;
+
+}
+
+.infoDateTime {
+
+	font-family: Barlow;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 17px;
+	/* identical to box height */
+
+	text-align: center;
+
+	color: #999999;
+}
+
+.infoCityCountry {
+
+	font-family: Barlow;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	width: 154px;
+	height: 100%;
+
+	color: #0DA0EA;
+	background: rgba(13, 159, 234, 0.08);
+}
