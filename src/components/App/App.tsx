@@ -31,7 +31,7 @@ function App() {
       </section>
 			<input type="text" onChange={getWeatherOne}/>
 				<Typeahead options={['Moscow', 'Minsk', 'Kirov', 'Monaco']} value={citySelected} onOptionSelected={getWeather} />
-				<button onClick={() => dispatch(getCitiesTC())}>get cities</button>
+				<button onClick={() => dispatch(getCitiesTC('moscow'))}>get cities</button>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>

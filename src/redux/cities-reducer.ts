@@ -19,11 +19,11 @@ export const weatherReducer = (state = initialState, action: ActionsType) => {
 	};
 };
 
-export const getCitiesTC = () => async (dispatch: Dispatch) => {
+export const getCitiesTC = (cityName: string) => async (dispatch: Dispatch) => {
 	try {
 		
-			const response = await api.getCities();
-			console.log(response)
+			const response = await api.getCities(cityName);
+			console.log(response.data.list.map((el: any) => el.name))
 		
 	} catch (error) {
 		return error;

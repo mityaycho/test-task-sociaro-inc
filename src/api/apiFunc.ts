@@ -4,8 +4,7 @@ export const api = {
 	getWeather(cityName: string) {
 			return instance.get(`weather?q=${cityName}&units=metric&appid=${apiKey}`);
 	},
-	getCities() {
-		
-	
+	getCities(cityName: string) {
+		return instance.get(`find?q=${cityName}&units=metric&appid=${apiKey}`);
 	}
 };
