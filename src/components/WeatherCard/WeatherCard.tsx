@@ -56,32 +56,40 @@ const WeatherCard = (props: any) => {
 			cls = "degrees";
 			break;
 		}
+		case "temperatureChange": {
+			cls = "tempMinMaxContainer";
+			break;
+		}
 		default: {
 			iconSrc = undefined
 		}
 	}
 
 
-	let descriptionTitle = typeof props.description !== 'object'
-		? props.description
-		: `${props.description.temp_max} ${props.description.temp_min}`
+	let descriptionTitle = typeof props.description !== 'object' ?
+		props.description :
+		<div className={styles.tempMinMax}>
+			<p>{props.description.temp_max}</p>
+			<p>{props.description.temp_min}</p>
+		</div>
 
 	return (
 		<div className={styles.weatherCard}>
 			{
-				props.name !== "temperature" && 
+				props.name !== "temperature" &&
+				props.name !== "temperatureChange" &&
 				<span className={styles.icon}>
-					{props.name !== "temperatureChange" && <img src={iconSrc} alt="img" />}
+					 <img src={iconSrc} alt="img" />
 				</span>
 			}
 
 			<span className={styles[cls]}>{descriptionTitle} {!!unit && unit}</span>
 			{
 				props.name !== "temperature" &&
-				props.name !== "description" &&
-				props.name !== "temperatureChange" ?
-				<span>{props.name}</span> :
-				<span></span>
+					props.name !== "description" &&
+					props.name !== "temperatureChange" ?
+					<span>{props.name}</span> :
+					<span></span>
 			}
 		</div>
 	)

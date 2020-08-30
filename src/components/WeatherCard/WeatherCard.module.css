@@ -15,6 +15,7 @@ img {
 .weatherCard .icon {
 	width: 24px;
 	height: 24px;
+	margin: 10px;
 }
 
 .weatherCard .degrees {
@@ -40,4 +41,45 @@ margin-top: -25px;
 	font-size: 8px;
 	line-height: 10px;
 	letter-spacing: 0.1em;
+}
+
+.tempMinMax {
+	position: relative;
+}
+
+.tempMinMax p:nth-child(1) {
+	margin: 2px;
+	padding: 2px;
+	font-size: 1.5em;
+
+}
+
+.tempMinMax p:nth-child(1)::before {
+	content: url('./../../assets/images/celsius.png');
+	position: absolute;
+	margin-left: 30px;
+}
+
+.tempMinMax p:nth-child(1)::after {
+	content: url('./../../assets/images/arrow-up.png');
+	position: absolute;
+	margin-left: 25px;
+}
+
+.tempMinMax p:nth-child(2) {
+	margin: 2px;
+	padding: 2px;
+	font-size: 1.5em;
+}
+
+.tempMinMax p:nth-child(2)::before {
+	content: url('./../../assets/images/celsius.png');
+	position: absolute;
+	margin-left: 30px;
+}
+
+.tempMinMax p:nth-child(2)::after {
+	content: url('./../../assets/images/arrow-down.png');
+	position: absolute;
+	margin-left: 25px;
 }
