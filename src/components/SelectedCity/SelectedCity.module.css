@@ -1,7 +1,7 @@
 .selectedCity {
 	position: absolute;
 	width: 375px;
-	height: 431px;
+	height: 531px;
 	left: 0px;
 	top: 279px;
 	border-radius: 23px 23px 0 0;
@@ -53,8 +53,16 @@
 
 }
 
-.weatherDescriptionsContainer{
+.weatherDescriptionsContainer {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+}
+
+.weekContainer {
+	display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+
+	width: 375px;
 }
