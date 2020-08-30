@@ -1,0 +1,49 @@
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+.weatherCard{
+	flex: 1 1 31%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0 20px 0;
+}
+
+.weatherCard .blockIconImg{
+	width: 24px;
+	height: 24px;
+}
+
+.weatherCard .degrees{
+	position: relative;
+	font-weight: 300;
+	font-size: 64px;
+	line-height: 77px;
+}
+
+.weatherCard .degrees::before{
+	content: 'C';
+	position: absolute;
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 29px;
+	width: 24px;
+	height: 29px;
+	top: 11px;
+	right: -20px;
+}
+
+.weatherCard:nth-child(2){
+
+}
+
+.weatherCard span:last-child{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 8px;
+	line-height: 10px;
+	letter-spacing: 0.1em;
+}

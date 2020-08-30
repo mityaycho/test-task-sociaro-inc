@@ -5,7 +5,7 @@ import { getWeatherTC } from '../../redux/weather-reducer';
 import { Typeahead } from '@gforge/react-typeahead-ts';
 import { getCitiesTC } from '../../redux/cities-reducer';
 import Header from '../Header/Header';
-import CheckedCity from '../CheckedCity/CheckedCity';
+import SelectedCity from '../SelectedCity/SelectedCity';
 
 function App() {
 
@@ -23,21 +23,19 @@ function App() {
 		dispatch(getWeatherTC(e.currentTarget.value));
 	}, [dispatch]);
 
-  return (
-    <div className={styles.App}>
-      <section className={styles.AppContainer}>
+	return (
+		<div className={styles.App}>
+			<section className={styles.AppContainer}>
 				<Header />
-				<CheckedCity />
-				
-      </section>
-			<input type="text" onChange={getWeatherOne}/>
-				<Typeahead options={findCities} value={citySelected} onOptionSelected={getWeather} />
-				<button onClick={() => dispatch(getCitiesTC('moscow'))}>get cities</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-    </div>
-  );
+				<SelectedCity />
+
+			</section>
+			{/* <input type="text" onChange={getWeatherOne} />
+			<Typeahead options={findCities} value={citySelected} onOptionSelected={getWeather} />
+			<button onClick={() => dispatch(getCitiesTC('moscow'))}>get cities</button> */}
+
+		</div>
+	);
 };
 
 export default App;
