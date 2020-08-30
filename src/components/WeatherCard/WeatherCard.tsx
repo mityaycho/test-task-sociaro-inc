@@ -70,7 +70,7 @@ const WeatherCard = (props: any) => {
 		<div className={styles.weatherCard}>
 			{
 				props.name !== "temperature" && 
-				<span className={styles.blockIconImg}>
+				<span className={styles.icon}>
 					{props.name !== "temperatureChange" && <img src={iconSrc} alt="img" />}
 				</span>
 			}

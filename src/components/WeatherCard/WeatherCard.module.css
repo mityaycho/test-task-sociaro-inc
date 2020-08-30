@@ -1,9 +1,9 @@
-img{
+img {
 	max-width: 100%;
 	height: auto;
 }
 
-.weatherCard{
+.weatherCard {
 	flex: 1 1 31%;
 	display: flex;
 	flex-direction: column;
@@ -12,35 +12,29 @@ img{
 	margin: 20px 0 20px 0;
 }
 
-.weatherCard .blockIconImg{
+.weatherCard .icon {
 	width: 24px;
 	height: 24px;
 }
 
-.weatherCard .degrees{
+.weatherCard .degrees {
 	position: relative;
 	font-weight: 300;
 	font-size: 64px;
-	line-height: 77px;
+	line-height: 1px;
 }
 
-.weatherCard .degrees::before{
-	content: 'C';
+.weatherCard .degrees::before {
+	content: url('./../../assets/images/celsius.png');
 	position: absolute;
-	font-weight: 500;
-	font-size: 24px;
-	line-height: 29px;
-	width: 24px;
-	height: 29px;
-	top: 11px;
-	right: -20px;
+	
+margin-top: -25px;
+	right: -23px;
 }
 
-.weatherCard:nth-child(2){
+.weatherCard:nth-child(2) {}
 
-}
-
-.weatherCard span:last-child{
+.weatherCard span:last-child {
 	font-style: normal;
 	font-weight: 500;
 	font-size: 8px;
