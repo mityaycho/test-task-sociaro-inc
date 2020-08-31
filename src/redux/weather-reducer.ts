@@ -3,14 +3,8 @@ import { api } from "../api/apiFunc";
 import { Dispatch } from 'redux';
 
 export const dateСonvertation = (value: any) => {
-	let months = [
-		'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-	];
-
-	let days = [
-		'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
-	];
-
+	let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	let date = new Date(+value * 1000);
 	let hour = date.getHours();
 	let minute = date.getMinutes();
@@ -20,13 +14,45 @@ export const dateСonvertation = (value: any) => {
 	let year = date.getFullYear();
 
 	return { day, month, year, hour, minute, numberOfMonths };
+};
+
+export type IStateWeather = {
+	success: boolean;
+	description: undefined | string;
+	temperature: undefined | number;
+	temperatureChange: undefined;
+	city: undefined | string;
+	country: undefined | string;
+	humidity: undefined | string;
+	pressure: undefined | string;
+	wind: undefined | string;
+	sunrise: undefined | string;
+	sunset: undefined | string;
+	daytime: undefined | string;
+	dt: undefined | string;
+	error: undefined | string;
+	backgroundDayNight: boolean;
 }
 
 const initialState = {
+	success: false,
+	description: undefined,
+	temperature: undefined,
+	temperatureChange: undefined,
+	city: undefined,
+	country: undefined,
+	humidity: undefined,
+	pressure: undefined,
+	wind: undefined,
+	sunrise: undefined,
+	sunset: undefined,
+	daytime: undefined,
+	dt: undefined,
+	error: undefined,
 	backgroundDayNight: true
 };
 
-export const weatherReducer = (state = initialState, action: ActionsType) => {
+export const weatherReducer = (state: IStateWeather = initialState, action: ActionsType) => {
 
 	switch (action.type) {
 		case GET_WEATHER:

@@ -28,8 +28,8 @@ img {
 .weatherCard .degrees::before {
 	content: url('./../../assets/images/celsius.png');
 	position: absolute;
-	
-margin-top: -25px;
+
+	margin-top: -25px;
 	right: -23px;
 }
 
@@ -50,38 +50,39 @@ margin-top: -25px;
 .tempMinMax p:nth-child(1) {
 	margin: 2px;
 	padding: 2px;
-	font-size: 1.5em;
-
+	font-size: 16px;
+	color: #666666;
 }
 
 .tempMinMax p:nth-child(1)::before {
-	content: url('./../../assets/images/celsius.png');
+	content: url('./../../assets/images/celsius-small.png');
 	position: absolute;
-	margin-left: 30px;
+	margin-left: 20px;
 }
 
 .tempMinMax p:nth-child(1)::after {
 	content: url('./../../assets/images/arrow-up.png');
 	position: absolute;
-	margin-left: 25px;
+	margin-left: 20px;
 }
 
 .tempMinMax p:nth-child(2) {
 	margin: 2px;
 	padding: 2px;
-	font-size: 1.5em;
+	font-size: 16px;
+	color: #666666;
 }
 
 .tempMinMax p:nth-child(2)::before {
-	content: url('./../../assets/images/celsius.png');
+	content: url('./../../assets/images/celsius-small.png');
 	position: absolute;
-	margin-left: 30px;
+	margin-left: 20px;
 }
 
 .tempMinMax p:nth-child(2)::after {
 	content: url('./../../assets/images/arrow-down.png');
 	position: absolute;
-	margin-left: 25px;
+	margin-left: 20px;
 }
 
 .backgroundDayNightIMG {

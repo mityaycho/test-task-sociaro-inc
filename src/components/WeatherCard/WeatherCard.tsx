@@ -10,8 +10,19 @@ import clock from './../../assets/images/sand-clock.png';
 import sunrise from './../../assets/images/sunrise.png';
 import sunset from './../../assets/images/sunset.png';
 
+interface Idescription {
+	temp_max: number;
+	temp_min: number;
+}
 
-const WeatherCard = (props: any) => {
+type WeatherCardPropsType = {
+	key: string;
+	name: string;
+	description: Idescription;
+	backgroundDayNight: boolean;
+}
+
+const WeatherCard = (props: WeatherCardPropsType) => {
 	let iconSrc, unit;
 	let cls = '';
 	switch (props.name) {
@@ -82,7 +93,7 @@ const WeatherCard = (props: any) => {
 				props.name !== 'temperature' &&
 				props.name !== 'temperatureChange' &&
 				<span className={props.name !== 'description' ? styles.icon : styles.backgroundDayNightIMG}>
-					 <img src={iconSrc} alt="img" />
+					 <img src={iconSrc} alt={`icon ${props.name}`} />
 				</span>
 			}
 
