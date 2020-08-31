@@ -10,7 +10,7 @@ import DayWeek from '../DayWeek/DayWeek';
 function SelectedCity() {
 
 	const dispatch = useDispatch();
-	const state = useSelector((state: any) => state.weatherState)
+	const state = useSelector((state: any) => state.weatherState);
 
 	useEffect(() => {
 		(async () => {
@@ -26,9 +26,9 @@ function SelectedCity() {
 			key !== "country" &&
 			key !== "error" &&
 			key !== "dt");
-		let resultParams = keysForRender.map(key => <WeatherCard key={key} name={key} description={state[key]} />);
-		debugger
-		return resultParams;
+
+		let weatherCardsArray = keysForRender.map(key => key !== 'backgroundDayNight' && <WeatherCard key={key} name={key} description={state[key]} />);
+		return weatherCardsArray;
 	};
 
 	const date = dateСonvertation(state.dt);

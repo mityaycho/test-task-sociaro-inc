@@ -22,7 +22,9 @@ export const dateСonvertation = (value: any) => {
 	return { day, month, year, hour, minute, numberOfMonths };
 }
 
-const initialState = {};
+const initialState = {
+	backgroundDayNight: true
+};
 
 export const weatherReducer = (state = initialState, action: ActionsType) => {
 
@@ -40,7 +42,6 @@ export const weatherReducer = (state = initialState, action: ActionsType) => {
 export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 	try {
 			const response = await api.getWeather(city);
-			console.log(response.data)
 			const data = response.data;
 
 			const newData = {
@@ -60,11 +61,11 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 				sunset: `${dateСonvertation(data.sys.sunset).hour}:${dateСonvertation(data.sys.sunset).minute}`,
 				daytime: `${dateСonvertation(data.dt).hour}:${dateСonvertation(data.dt).minute}`,
 				dt: data.dt,
-				error: undefined
+				error: undefined,
+				backgroundDayNight: data.dt > data.sys.sunrise && data.dt < data.sys.sunset ? true : false
 			}
 
 		dispatch(getWeatherAC(newData));
-
 	} catch (error) {
 		return error;
 	}

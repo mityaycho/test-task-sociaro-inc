@@ -11,7 +11,7 @@ function App() {
 
 	const [citySelected, setCitySelected] = useState('');
 	const dispatch = useDispatch();
-	const findCities = useSelector((state: any) => state.citiesState.cities)
+	const findCities = useSelector((state: any) => state.citiesState.cities);
 
 	const getWeather = useCallback((e: any) => {
 		console.log(e)
