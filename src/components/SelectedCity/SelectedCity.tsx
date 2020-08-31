@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './SelectedCity.module.css';
-import geoTag from './../../assets/images/geo-tag.png'
+import geoTag from './../../assets/images/geo-tag.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWeatherTC, dateСonvertation } from '../../redux/weather-reducer';
 import WeatherCard from '../WeatherCard/WeatherCard';
@@ -21,13 +21,13 @@ function SelectedCity() {
 	const weatherCardsJSX = () => {
 		let keys = (Object.keys(state) as Array<any>).map(key => key);
 		let keysForRender = keys.filter((key) =>
-			key !== "success" &&
-			key !== "city" &&
-			key !== "country" &&
-			key !== "error" &&
-			key !== "dt");
+			key !== 'success' &&
+			key !== 'city' &&
+			key !== 'country' &&
+			key !== 'error' &&
+			key !== 'dt');
 
-		let weatherCardsArray = keysForRender.map(key => key !== 'backgroundDayNight' && <WeatherCard key={key} name={key} description={state[key]} />);
+		let weatherCardsArray = keysForRender.map(key => key !== 'backgroundDayNight' && <WeatherCard key={key} name={key} description={state[key]} backgroundDayNight={key === 'backgroundDayNight'}/>);
 		return weatherCardsArray;
 	};
 

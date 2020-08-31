@@ -3,7 +3,8 @@ import styles from './WeatherCard.module.css';
 import humidity from './../../assets/images/humidity.png';
 import barometer from './../../assets/images/barometer.png'
 import wind from './../../assets/images/wind.png';
-import cloudyClear from './../../assets/images/cloudy-clear.png';
+import cloudyClearDay from './../../assets/images/cloudy-clear-day.png';
+import cloudyClearNight from './../../assets/images/cloudy-clear-night.png';
 import cloudy from './../../assets/images/cloudy.png';
 import clock from './../../assets/images/sand-clock.png';
 import sunrise from './../../assets/images/sunrise.png';
@@ -14,50 +15,52 @@ const WeatherCard = (props: any) => {
 	let iconSrc, unit;
 	let cls = '';
 	switch (props.name) {
-		case "pressure": {
+		case 'pressure': {
 			iconSrc = barometer;
-			unit = "mBar";
+			unit = 'mBar';
 			break;
 		}
-		case "humidity": {
+		case 'humidity': {
 			iconSrc = humidity;
-			unit = "%";
+			unit = '%';
 			break;
 		}
-		case "wind": {
+		case 'wind': {
 			iconSrc = wind;
-			unit = "km/h";
+			unit = 'km/h';
 			break;
 		}
-		case "clouds": {
+		case 'clouds': {
 			iconSrc = cloudy;
 			break;
 		}
-		case "daytime": {
+		case 'daytime': {
 			iconSrc = clock;
-			unit = "H";
+			unit = 'H';
 			break;
 		}
-		case "sunrise": {
+		case 'sunrise': {
 			iconSrc = sunrise;
-			unit = "AM";
+			unit = 'AM';
 			break;
 		}
-		case "sunset": {
+		case 'sunset': {
 			iconSrc = sunset;
-			unit = "PM";
+			unit = 'PM';
 			break;
 		}
-		case "description": {
-			iconSrc = cloudyClear;
+		case 'description': {
+			props.backgroundDayNight ?
+			iconSrc = cloudyClearDay :
+			iconSrc = cloudyClearNight;
 			break;
 		}
-		case "temperature": {
-			cls = "degrees";
+		case 'temperature': {
+			cls = 'degrees';
 			break;
 		}
-		case "temperatureChange": {
-			cls = "tempMinMaxContainer";
+		case 'temperatureChange': {
+			cls = 'tempMinMaxContainer';
 			break;
 		}
 		default: {
@@ -76,18 +79,18 @@ const WeatherCard = (props: any) => {
 	return (
 		<div className={styles.weatherCard}>
 			{
-				props.name !== "temperature" &&
-				props.name !== "temperatureChange" &&
-				<span className={styles.icon}>
+				props.name !== 'temperature' &&
+				props.name !== 'temperatureChange' &&
+				<span className={props.name !== 'description' ? styles.icon : styles.backgroundDayNightIMG}>
 					 <img src={iconSrc} alt="img" />
 				</span>
 			}
 
 			<span className={styles[cls]}>{descriptionTitle} {!!unit && unit}</span>
 			{
-				props.name !== "temperature" &&
-					props.name !== "description" &&
-					props.name !== "temperatureChange" ?
+				props.name !== 'temperature' &&
+					props.name !== 'description' &&
+					props.name !== 'temperatureChange' ?
 					<span>{props.name}</span> :
 					<span></span>
 			}
