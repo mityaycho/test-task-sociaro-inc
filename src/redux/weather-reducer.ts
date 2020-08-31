@@ -2,16 +2,16 @@ import { GET_WEATHER, ActionsType, getWeatherAC } from "./actions";
 import { api } from "../api/apiFunc";
 import { Dispatch } from 'redux';
 
+export const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 export const dateСonvertation = (value: any) => {
-	let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-	let date = new Date(+value * 1000);
-	let hour = date.getHours();
-	let minute = date.getMinutes();
-	let day = days[date.getDay()];
-	let numberOfMonths = date.getDate();
-	let month = months[date.getMonth()];
-	let year = date.getFullYear();
+	const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	const date = new Date(+value * 1000);
+	const hour = date.getHours();
+	const minute = date.getMinutes();
+	const day = DAYS[date.getDay()];
+	const numberOfMonths = date.getDate();
+	const month = MONTHS[date.getMonth()];
+	const year = date.getFullYear();
 
 	return { day, month, year, hour, minute, numberOfMonths };
 };

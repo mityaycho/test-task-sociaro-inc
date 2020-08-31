@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './SelectedCity.module.css';
 import geoTag from './../../assets/images/geo-tag.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { getWeatherTC, dateСonvertation } from '../../redux/weather-reducer';
+import { getWeatherTC, dateСonvertation, DAYS } from '../../redux/weather-reducer';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import DayWeek from '../DayWeek/DayWeek';
 import preloaderIMG from './../../assets/images/preloader.gif'
@@ -34,6 +34,8 @@ function SelectedCity() {
 
 	const date = dateСonvertation(state.dt);
 
+	const daysJSX = DAYS.map(el => <DayWeek title={el.split('').slice(0, 3).join('')}/>);
+
 	return (
 		<div className={styles.selectedCity}>
 			{!state.success ?
@@ -50,13 +52,7 @@ function SelectedCity() {
 					</div>
 
 					<div className={styles.weekContainer}>
-						<DayWeek />
-						<DayWeek />
-						<DayWeek />
-						<DayWeek />
-						<DayWeek />
-						<DayWeek />
-						<DayWeek />
+						{daysJSX}
 					</div>
 				</>
 			}

@@ -2,11 +2,15 @@ import React from 'react';
 import styles from './DayWeek.module.css';
 
 
-function DayWeek() {
+type IProps = {
+	title: string;
+}
+
+function DayWeek(props: IProps) {
 
   return (
     <div className={styles.dayWeek}>
-      <p>Day</p>
+      <p>{props.title}</p>
     </div>
   );
 };
