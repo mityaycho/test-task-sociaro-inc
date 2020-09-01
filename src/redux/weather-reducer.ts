@@ -69,6 +69,8 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 	try {
 			const data = await api.getWeather(city);
 		
+			const weekWeather = await api.getWeekWeather(data.coord.lat, data.coord.lon);
+			console.log(weekWeather);
 
 			const newData = {
 				success: true,
@@ -92,6 +94,14 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 			}
 
 		dispatch(getWeatherAC(newData));
+	} catch (error) {
+		return error;
+	}
+};
+
+export const getWeekWeatherTC = (city: string) => async (dispatch: Dispatch) => {
+	try {
+			
 	} catch (error) {
 		return error;
 	}
