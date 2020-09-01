@@ -1,5 +1,5 @@
 import { GET_WEATHER, ActionsType, getWeatherAC } from "./actions";
-import { api } from "../api/apiFunc";
+import { api } from "../api/apiFetch";
 import { Dispatch } from 'redux';
 
 export const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

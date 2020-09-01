@@ -1,4 +1,4 @@
-import { api } from "../api/apiFunc";
+import { api } from "../api/apiFetch";
 import { Dispatch } from 'redux';
 import { GET_CITIES, citiesReducerAC } from "./actions";
 
