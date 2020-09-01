@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/test-task-sociaro-inc/precache-manifest.87b761876d17fa77dcafab0f1942d587.js"
+  "/test-task-sociaro-inc/precache-manifest.2fddc483c1b681ed62801aa30c24a106.js"
 );
 
 self.addEventListener('message', (event) => {
