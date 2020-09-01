@@ -28,18 +28,25 @@ function SelectedCity() {
 			key !== 'error' &&
 			key !== 'dt');
 
-		let weatherCardsArray = keysForRender.map(key => key !== 'backgroundDayNight' && <WeatherCard key={key} name={key} description={state[key]} backgroundDayNight={key === 'backgroundDayNight'} />);
+		let weatherCardsArray = keysForRender.map(key => key !== 'backgroundDayNight' &&
+			<WeatherCard
+				key={key}
+				name={key}
+				description={state[key]}
+				backgroundDayNight={key === 'backgroundDayNight'}
+			/>);
+
 		return weatherCardsArray;
 	};
 
 	const date = dateСonvertation(state.dt);
 
-	const daysJSX = DAYS.map(el => <DayWeek title={el.split('').slice(0, 3).join('')}/>);
+	const daysJSX = DAYS.map(el => <DayWeek title={el.split('').slice(0, 3).join('')} />);
 
 	return (
 		<div className={styles.selectedCity}>
 			{!state.success ?
-				<img src={preloaderIMG} alt="preloader img"/> :
+				<img src={preloaderIMG} alt="preloader img" /> :
 				<>
 					<div className={styles.infoHead}>
 						<p className={styles.infoDateTime}>{`${date?.day}, ${date?.numberOfMonths} ${date?.month} ${date?.year} | ${date?.hour}:${date?.minute}`}</p>

@@ -16,7 +16,7 @@ export const dateСonvertation = (value: any) => {
 	return { day, month, year, hour, minute, numberOfMonths };
 };
 
-export type IStateWeather = {
+export type StateWeatherType = {
 	success: boolean;
 	description: undefined | string;
 	temperature: undefined | number;
@@ -52,7 +52,7 @@ const initialState = {
 	backgroundDayNight: true
 };
 
-export const weatherReducer = (state: IStateWeather = initialState, action: ActionsType) => {
+export const weatherReducer = (state: StateWeatherType = initialState, action: ActionsType) => {
 
 	switch (action.type) {
 		case GET_WEATHER:
@@ -67,8 +67,8 @@ export const weatherReducer = (state: IStateWeather = initialState, action: Acti
 
 export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 	try {
-			const response = await api.getWeather(city);
-			const data = response.data;
+			const data = await api.getWeather(city);
+		
 
 			const newData = {
 				success: true,
