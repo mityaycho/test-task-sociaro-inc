@@ -70,7 +70,7 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 			const data = await api.getWeather(city);
 		
 			const weekWeather = await api.getWeekWeather(data.coord.lat, data.coord.lon);
-			console.log(weekWeather);
+			console.log(weekWeather.daily);
 
 			const newData = {
 				success: true,

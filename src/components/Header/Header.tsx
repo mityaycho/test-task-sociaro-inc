@@ -1,9 +1,10 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import styles from './Header.module.css';
 import { Typeahead } from '@gforge/react-typeahead-ts';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCitiesTC } from '../../redux/cities-reducer';
 import { withRouter } from 'react-router-dom';
+import { getWeatherTC } from './../../redux/weather-reducer';
 
 
 
@@ -16,7 +17,7 @@ function Header(props: any) {
 	const backgroundDayNight = useSelector((state: any) => state.weatherState.backgroundDayNight);
 
 	const selectedCityOnOptions = useCallback((e: any) => {
-		dispatch(getCitiesTC(e));
+		dispatch(getWeatherTC(e));
 		props.history.push('selectedCity');
 	}, [props.history, dispatch]);
 

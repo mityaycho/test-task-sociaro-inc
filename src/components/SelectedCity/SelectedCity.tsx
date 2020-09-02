@@ -13,11 +13,11 @@ function SelectedCity() {
 	const dispatch = useDispatch();
 	const state = useSelector((state: any) => state.weatherState);
 
-	useEffect(() => {
-		(async () => {
-			dispatch(getWeatherTC('Moscow'));
-		})()
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	(async () => {
+	// 		dispatch(getWeatherTC('Moscow'));
+	// 	})()
+	// }, [dispatch]);
 
 	const weatherCardsJSX = () => {
 		let keys = (Object.keys(state)).map(key => key);
