@@ -9,11 +9,10 @@
 }
 
 .AppContainer {
-	position: relative;
 	display: flex;
+	flex-direction: column;
 
 	width: 375px;
-	height: 812px;
 	font-size: calc(10px + 2vmin);
 	color: white;
 }

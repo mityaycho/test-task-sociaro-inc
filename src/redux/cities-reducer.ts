@@ -6,8 +6,9 @@ import { GET_CITIES, citiesReducerAC } from "./actions";
 
 const initialState = {
 	cities: [{
-		name: 'Moscow',
-		country: 'RU'
+		name: '',
+		country: '',
+		coord: {}
 	}]
 };
 
@@ -28,8 +29,9 @@ export const getCitiesTC = (cityName: string) => async (dispatch: Dispatch) => {
 	try {
 		
 			const response = await api.getCities(cityName);
-			console.log(response.data.list.map((el: any) => ({name: el.name, country: el.sys.country})));
-			const findCities = response.data.list.map((el: any) => (el.name));
+			const findCities = response.data.list.map((el: any) => ({name: el.name, country: el.sys.country, coord: el.coord}));
+			console.log(response.data.list.map((el: any) => el));
+			console.log(findCities);
 		dispatch(citiesReducerAC(findCities))
 	} catch (error) {
 		return error;

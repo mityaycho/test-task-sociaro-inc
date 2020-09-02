@@ -33,7 +33,6 @@ function SelectedCity() {
 				key={key}
 				name={key}
 				description={state[key]}
-				backgroundDayNight={key === 'backgroundDayNight'}
 			/>);
 
 		return weatherCardsArray;

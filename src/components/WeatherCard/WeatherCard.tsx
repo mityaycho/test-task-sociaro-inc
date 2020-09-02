@@ -9,20 +9,23 @@ import cloudy from './../../assets/images/cloudy.png';
 import clock from './../../assets/images/sand-clock.png';
 import sunrise from './../../assets/images/sunrise.png';
 import sunset from './../../assets/images/sunset.png';
+import { useSelector } from 'react-redux';
 
 interface Idescription {
 	temp_max: number;
 	temp_min: number;
-}
+};
 
 type WeatherCardPropsType = {
 	key: string;
 	name: string;
 	description: Idescription;
-	backgroundDayNight: boolean;
-}
+};
 
 const WeatherCard = (props: WeatherCardPropsType) => {
+
+	const backgroundDayNight = useSelector((state: any) => state.weatherState.backgroundDayNight);
+
 	let iconSrc, unit;
 	let cls = '';
 	switch (props.name) {
@@ -61,7 +64,7 @@ const WeatherCard = (props: WeatherCardPropsType) => {
 			break;
 		}
 		case 'description': {
-			props.backgroundDayNight ?
+			backgroundDayNight ?
 			iconSrc = cloudyClearDay :
 			iconSrc = cloudyClearNight;
 			break;

@@ -1,9 +1,11 @@
 .header {
+	position: relative;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	background-size: cover;
+	
 	width: 375px;
 	height: 300px;
 	font-size: calc(10px + 2vmin);
@@ -16,4 +18,17 @@
 
 .night {
 	background-image: url('./../../assets/images/background-night.png');
+}
+
+.inputTypeahead input {
+	border-radius: 15px;
+	outline: none;
+}
+
+.historyBtn {
+	outline: none;
+	cursor: pointer;
+	background: white;
+	margin-left: 10px;
+	border-radius: 15px;
 }
