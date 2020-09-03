@@ -22,7 +22,7 @@ type WeatherCardPropsType = {
 	description: Idescription;
 };
 
-const WeatherCard = (props: WeatherCardPropsType) => {
+const WeatherCard = React.memo((props: WeatherCardPropsType) => {
 
 	const backgroundDayNight = useSelector((state: any) => state.weatherState.backgroundDayNight);
 
@@ -80,7 +80,7 @@ const WeatherCard = (props: WeatherCardPropsType) => {
 		default: {
 			iconSrc = undefined
 		}
-	}
+	};
 
 
 	let descriptionTitle = typeof props.description !== 'object' ?
@@ -88,7 +88,7 @@ const WeatherCard = (props: WeatherCardPropsType) => {
 		<div className={styles.tempMinMax}>
 			<p>{props.description.temp_max}</p>
 			<p>{props.description.temp_min}</p>
-		</div>
+		</div>;
 
 	return (
 		<div className={styles.weatherCard}>
@@ -109,7 +109,7 @@ const WeatherCard = (props: WeatherCardPropsType) => {
 					<span></span>
 			}
 		</div>
-	)
-}
+	);
+});
 
 export default WeatherCard;

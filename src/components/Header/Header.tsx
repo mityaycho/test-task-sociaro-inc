@@ -8,7 +8,7 @@ import { getWeatherTC } from './../../redux/weather-reducer';
 
 
 
-function Header(props: any) {
+const Header = React.memo((props: any) => {
 
 	const [citySelected, setCitySelected] = useState('');
 	const dispatch = useDispatch();
@@ -46,6 +46,6 @@ function Header(props: any) {
 				<button className={styles.historyBtn} onClick={changeRoute}>history</button>
 		</div>
 	);
-};
+});
 
 export default withRouter(Header);

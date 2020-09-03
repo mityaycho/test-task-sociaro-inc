@@ -6,13 +6,13 @@ type IProps = {
 	title: string;
 }
 
-function SearchHistory(props: IProps) {
+const SearchHistory = React.memo((props: IProps) => {
 
   return (
     <div className={styles.searchHistoryContainer}>
       hi
     </div>
   );
-};
+});
 
 export default SearchHistory;

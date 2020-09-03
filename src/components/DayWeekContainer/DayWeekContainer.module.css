@@ -1,0 +1,11 @@
+.dayWeekContainer{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  width: 375px;
+}
+
+.dayWeekContainer::-webkit-scrollbar {
+  display: none;
+}

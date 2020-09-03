@@ -5,7 +5,7 @@ import SelectedCity from '../SelectedCity/SelectedCity';
 import { Route } from 'react-router-dom';
 import SearchHistory from '../HistorySearch/HistorySearch';
 
-function App() {
+const App = () => {
 
 	return (
 		<div className={styles.App}>
