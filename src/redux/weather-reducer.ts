@@ -97,6 +97,11 @@ export const weatherReducer = (state: StateWeatherType = initialState, action: A
 export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 	try {
 		let historySearchLS;
+		if (!localStorage.getItem('historySearchLS')) {
+			localStorage.setItem("historySearchLS", JSON.stringify([]));
+		} else {
+		historySearchLS = JSON.parse(localStorage.getItem('historySearchLS')!);
+	}
 // Создаю переменную для локал стореджа, делаю запрос за выбранным городом и запрос для дней недели
 		const data = await api.getWeather(city);
 		const weekWeather = await api.getWeekWeather(data.coord.lat, data.coord.lon);
