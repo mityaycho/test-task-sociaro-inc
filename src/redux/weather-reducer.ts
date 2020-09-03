@@ -95,7 +95,14 @@ export const weatherReducer = (state: StateWeatherType = initialState, action: A
 
 export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 	try {
-		
+		let historySearchLS;
+		if (!localStorage.getItem('historySearchLS')) {
+			localStorage.setItem("historySearchLS", JSON.stringify([]));
+			return false;
+		} else {
+		historySearchLS = JSON.parse(localStorage.getItem('historySearchLS')!);
+	}
+
 		const data = await api.getWeather(city);
 		const weekWeather = await api.getWeekWeather(data.coord.lat, data.coord.lon);
 
@@ -140,9 +147,10 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 			temperature: Math.round(data.main.temp)
 		};
 
+		localStorage.setItem('historySearchLS', JSON.stringify(historySearchData));
 		dispatch(getWeatherAC(newData));
 		dispatch(weekWeatherAC(weekWeatherData));
-		dispatch(historySearchAC(historySearchData));
+		historySearchLS === '' ? dispatch(historySearchAC(historySearchData)) : dispatch(historySearchAC(historySearchLS));
 	} catch (error) {
 		return error;
 	}
