@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ecb8ce974e5ac51d0225d99a4d093faa",
+    "revision": "9ab0594640a4ff20fe4d0d6d1ba60289",
     "url": "/test-task-sociaro-inc/index.html"
   },
   {
-    "revision": "4589019081a87431d6ec",
+    "revision": "6d80553f04033739c4f2",
     "url": "/test-task-sociaro-inc/static/css/main.fd9891d4.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/test-task-sociaro-inc/static/js/2.d9857960.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4589019081a87431d6ec",
-    "url": "/test-task-sociaro-inc/static/js/main.4c41c47c.chunk.js"
+    "revision": "6d80553f04033739c4f2",
+    "url": "/test-task-sociaro-inc/static/js/main.8833ede9.chunk.js"
   },
   {
     "revision": "f56caa2728e05dc0b4dd",
