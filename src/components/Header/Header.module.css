@@ -21,7 +21,8 @@
 }
 
 .inputTypeahead input {
-	border-radius: 15px;
+	padding-left: 5px;
+	border-radius: 10px;
 	outline: none;
 }
 
@@ -30,5 +31,5 @@
 	cursor: pointer;
 	background: white;
 	margin-left: 10px;
-	border-radius: 15px;
+	border-radius: 10px;
 }

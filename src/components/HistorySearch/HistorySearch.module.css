@@ -8,3 +8,37 @@
 	background: #FFFFFF;
 	box-shadow: 0px -16px 40px rgba(0, 0, 0, 0.2);
 }
+
+.historyList {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.historyCity {
+	text-decoration: none;
+	display: flex;
+	justify-content: space-between;
+	padding: 9px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 22px;
+	color: #444444;
+	width: 100%;
+	transition: all .3s;
+}
+
+.historyCity p {
+	margin: 0 10px 0 10px;
+	padding: 0;
+	font-family: Barlow;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px;
+	/* identical to box height */
+
+	letter-spacing: -0.05em;
+
+	color: #444444;
+}

@@ -1,18 +1,24 @@
 import React from 'react';
 import styles from './HistorySearch.module.css';
+import { useSelector } from 'react-redux';
 
 
-type IProps = {
-	title: string;
-}
+const SearchHistory = () => {
 
-const SearchHistory = React.memo((props: IProps) => {
+	const selectedCityData = useSelector((state: any) => state.weatherState.selectedCity);
 
-  return (
-    <div className={styles.searchHistoryContainer}>
-      hi
-    </div>
-  );
-});
+	const selectedCityJSX = selectedCityData.map((el: any) =>
+		<li className={styles.historyCity}>
+			<p>{el.city}, {el.country}</p>
+			<p>{el.temperature}&#176;C</p>
+		</li>);
+
+	return (
+		<div className={styles.searchHistoryContainer}>
+			<ul className={styles.historyList}></ul>
+			{selectedCityJSX}
+		</div>
+	);
+};
 
 export default SearchHistory;

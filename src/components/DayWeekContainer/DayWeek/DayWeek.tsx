@@ -8,12 +8,12 @@ import { dateСonvertation } from '../../../assets/reusableJS';
 
 const DayWeek = React.memo((props: any) => {
 	const day = props.day;
-	const dayName = dateСonvertation(props.day.dt);
+	const dayName = dateСonvertation(day.dt);
 	const dayWeek = dayName.day.split('').slice(0, 3).join('');
 	const dateDay = dayName.numberOfMonths
 
 	let iconSrc;
-	switch (day.weather[0].main) {
+	switch (day.weather) {
 		case 'Clouds': {
 			iconSrc = cloudy;
 			break;
@@ -41,8 +41,8 @@ const DayWeek = React.memo((props: any) => {
 				{dayWeek}, {dateDay}
 			</span>
 			<span className={styles.temperatureDay}>
-				{Math.round(day.temp.max) - 273} &#176;C&uarr;
-				{Math.round(day.temp.min) - 273} &#176;C&darr;
+				{Math.round(day.tempMax) - 273} &#176;C&uarr;
+				{Math.round(day.tempMin) - 273} &#176;C&darr;
 			</span>
 		</div>
 	);

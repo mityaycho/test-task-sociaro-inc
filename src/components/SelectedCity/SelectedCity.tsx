@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SelectedCity.module.css';
 import geoTag from './../../assets/images/geo-tag.png';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import preloaderIMG from './../../assets/images/preloader.gif'
 import { dateСonvertation } from '../../assets/reusableJS';
@@ -9,16 +9,9 @@ import { v4 as uuidv4 } from 'uuid';
 import DayWeekContainer from '../DayWeekContainer/DayWeekContainer';
 
 
-const SelectedCity = React.memo(() => {
+const SelectedCity = () => {
 
-	const dispatch = useDispatch();
 	const { weather, weekWeather } = useSelector((state: any) => state.weatherState);
-
-	// useEffect(() => {
-	// 	(async () => {
-	// 		dispatch(getWeatherTC('Moscow'));
-	// 	})()
-	// }, [dispatch]);
 
 	const weatherCardsJSX = () => {
 		let keys = (Object.keys(weather)).map(key => key);
@@ -61,6 +54,6 @@ const SelectedCity = React.memo(() => {
 			}
 		</div>
 	);
-});
+};
 
 export default SelectedCity;

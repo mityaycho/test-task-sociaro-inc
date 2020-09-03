@@ -26,7 +26,7 @@ const Header = React.memo((props: any) => {
 	}, []);
 
 	const keyPressEnter = useCallback((e: React.KeyboardEvent) => {
-		dispatch(getCitiesTC(citySelected));
+		e.key === "Enter" && dispatch(getCitiesTC(citySelected));
 	}, [citySelected, dispatch]);
 
 	const changeRoute = useCallback(() => {
@@ -41,7 +41,7 @@ const Header = React.memo((props: any) => {
 				placeholder="Search city"
 				value={citySelected}
 				onChange={searchCities}
-				onKeyPress={keyPressEnter}
+				onKeyDown={keyPressEnter}
 				onOptionSelected={selectedCityOnOptions} />
 				<button className={styles.historyBtn} onClick={changeRoute}>history</button>
 		</div>
