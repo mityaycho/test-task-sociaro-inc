@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from './SelectedCity.module.css';
 import geoTag from './../../assets/images/geo-tag.png';
 import { useSelector } from 'react-redux';
@@ -7,9 +7,10 @@ import preloaderIMG from './../../assets/images/preloader.gif'
 import { dateСonvertation } from '../../assets/reusableJS';
 import { v4 as uuidv4 } from 'uuid';
 import DayWeekContainer from '../DayWeekContainer/DayWeekContainer';
+import { withRouter } from 'react-router-dom';
 
 
-const SelectedCity = () => {
+const SelectedCity = React.memo((props: any) => {
 
 	const { weather, weekWeather } = useSelector((state: any) => state.weatherState);
 
@@ -34,6 +35,10 @@ const SelectedCity = () => {
 
 	const date = dateСonvertation(weather.dt);
 
+	const changeRoute = useCallback(() => {
+		props.history.push('/');
+	}, [props.history]);
+
 	return (
 		<div className={styles.selectedCity}>
 			{!weather.success ?
@@ -41,7 +46,7 @@ const SelectedCity = () => {
 				<>
 					<div className={styles.infoHead}>
 						<p className={styles.infoDateTime}>{`${date.day}, ${date.numberOfMonths} ${date.month} ${date.year} | ${date.hour}:${date.minute}`}</p>
-						<span className={styles.infoCityContainer}>
+						<span className={styles.infoCityContainer} onClick={changeRoute}>
 							<p className={styles.infoCityCountry}>{`${weather.city}, ${weather.country}`} <img src={geoTag} alt="icon geo tag" /></p>
 						</span>
 					</div>
@@ -54,6 +59,6 @@ const SelectedCity = () => {
 			}
 		</div>
 	);
-};
+});
 
-export default SelectedCity;
+export default withRouter(SelectedCity);

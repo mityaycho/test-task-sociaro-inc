@@ -1,8 +1,7 @@
 export const GET_WEATHER = 'reducers/GET_WEATHER';
 export const GET_WEEK_WEATHER = 'reducers/GET_WEEK_WEATHER';
-export const FIND_CITIES = 'reducers/FIND_CITIES';
 export const WEEK_WEATHER = 'reducers/WEEK_WEATHER';
-export const SELECTED_CITY = 'reducers/SELECTED_CITY';
+export const HISTORY_SEARCH = 'reducers/HISTORY_SEARCH';
 
 
 type GetWeatherACType = {
@@ -19,13 +18,6 @@ type GetWeekWeatherType = {
 export const getWeekWeatherAC = (weekWeather: any): GetWeekWeatherType => ({ type: GET_WEEK_WEATHER, weekWeather });
 
 
-type FindCitiesACType = {
-	type: typeof FIND_CITIES;
-	findCities: any;
-};
-export const findCitiesAC = (findCities: any): FindCitiesACType => ({ type: FIND_CITIES, findCities });
-
-
 type WeekWeatherACType = {
 	type: typeof WEEK_WEATHER;
 	weekWeather: any;
@@ -33,12 +25,12 @@ type WeekWeatherACType = {
 export const weekWeatherAC = (weekWeather: any): WeekWeatherACType => ({ type: WEEK_WEATHER, weekWeather });
 
 
-type SelectedCityACType = {
-	type: typeof SELECTED_CITY;
-	selectedCity: any;
+type HistorySearchACType = {
+	type: typeof HISTORY_SEARCH;
+	historySearch: any;
 };
-export const selectedCityAC = (selectedCity: any): SelectedCityACType => ({ type: SELECTED_CITY, selectedCity });
+export const historySearchAC = (historySearch: any): HistorySearchACType => ({ type: HISTORY_SEARCH, historySearch });
 
 
 
-export type ActionsType = GetWeatherACType | WeekWeatherACType | SelectedCityACType;
+export type ActionsType = GetWeatherACType | WeekWeatherACType | HistorySearchACType;

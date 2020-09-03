@@ -1,7 +1,6 @@
 .App {
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	text-align: center;
 
 	background-color: #282c34;
@@ -9,10 +8,18 @@
 }
 
 .AppContainer {
-	display: flex;
-	flex-direction: column;
-
 	width: 375px;
 	font-size: calc(10px + 2vmin);
 	color: white;
+}
+
+.selectedCity {
+	position: absolute;
+	z-index: 1;
+	top: 275px;
+	width: 375px;
+	height: 531px;
+	border-radius: 23px 23px 0 0;
+	background: #FFFFFF;
+	box-shadow: 0px -16px 40px rgba(0, 0, 0, 0.2);
 }

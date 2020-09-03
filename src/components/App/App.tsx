@@ -3,7 +3,7 @@ import styles from './App.module.css';
 import Header from '../Header/Header';
 import SelectedCity from '../SelectedCity/SelectedCity';
 import { Route } from 'react-router-dom';
-import SearchHistory from '../HistorySearch/HistorySearch';
+import HistorySearch from '../HistorySearch/HistorySearch';
 
 const App = () => {
 
@@ -11,9 +11,10 @@ const App = () => {
 		<div className={styles.App}>
 			<section className={styles.AppContainer}>
 				<Header />
-				<Route exact path="/" />
-				<Route path="/selectedCity" component={SelectedCity} />
-				<Route path="/historySearch" component={SearchHistory} />
+				<div className={styles.selectedCity}>
+					<Route path="/selectedCity" component={SelectedCity} />
+					<Route exact path="/" component={HistorySearch} />
+				</div>
 			</section>
 		</div>
 	);

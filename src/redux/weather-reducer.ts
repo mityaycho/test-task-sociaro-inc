@@ -4,8 +4,8 @@ import {
 	getWeatherAC,
 	WEEK_WEATHER,
 	weekWeatherAC,
-	selectedCityAC,
-	SELECTED_CITY
+	historySearchAC,
+	HISTORY_SEARCH
 } from "./actions";
 import { api } from "../api/apiFetch";
 import { Dispatch } from 'redux';
@@ -19,7 +19,7 @@ export type WeekWeatherType = {
 	temp_day: number;
 };
 
-export type SelectedCityType = {
+export type historySearchType = {
 	city: any;
 	country: any;
 	temperature: any;
@@ -44,7 +44,7 @@ export type StateWeatherType = {
 	};
 	backgroundDayNight: boolean;
 	weekWeather: Array<WeekWeatherType>;
-	selectedCity: Array<SelectedCityType>;
+	historySearch: Array<historySearchType>;
 };
 
 const initialState = {
@@ -66,7 +66,7 @@ const initialState = {
 	},
 	backgroundDayNight: true,
 	weekWeather: [],
-	selectedCity: []
+	historySearch: []
 };
 
 export const weatherReducer = (state: StateWeatherType = initialState, action: ActionsType) => {
@@ -82,10 +82,10 @@ export const weatherReducer = (state: StateWeatherType = initialState, action: A
 				...state, weekWeather: [...action.weekWeather]
 			};
 
-		case SELECTED_CITY:
+		case HISTORY_SEARCH:
 
 			return {
-				...state, selectedCity: [...state.selectedCity, action.selectedCity]
+				...state, historySearch: [...state.historySearch, action.historySearch]
 			};
 
 		default:
@@ -121,8 +121,9 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 			daytime: `${dayTime.hour}:${dayTime.minute}`,
 			dt: data.dt,
 			error: undefined,
-			backgroundDayNight: data.dt > data.sys.sunrise && data.dt < data.sys.sunset ? true : false
+			backgroundDayNight: data.dt > data.sys.sunrise && data.dt < data.sys.sunset
 		};
+
 
 		const weekWeatherData = weekWeather.daily.map((el: any) => {
 			return {
@@ -133,7 +134,7 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 			}
 		})
 
-		const selectedCityData = {
+		const historySearchData = {
 			city: data.name,
 			country: data.sys.country,
 			temperature: Math.round(data.main.temp)
@@ -141,7 +142,7 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 
 		dispatch(getWeatherAC(newData));
 		dispatch(weekWeatherAC(weekWeatherData));
-		dispatch(selectedCityAC(selectedCityData));
+		dispatch(historySearchAC(historySearchData));
 	} catch (error) {
 		return error;
 	}

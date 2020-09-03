@@ -1,18 +1,35 @@
-.searchHistoryContainer {
-	margin-top: -20px;
-	z-index: 1;
-	top: 279px;
-	width: 375px;
-	height: 510px;
-	border-radius: 23px 23px 0 0;
-	background: #FFFFFF;
-	box-shadow: 0px -16px 40px rgba(0, 0, 0, 0.2);
-}
-
 .historyList {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.locationTitle {
+	position: relative;
+	font-family: Barlow;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+
+	color: #999999;
+}
+
+.inputTypeahead input {
+	width: 335px;
+	height: 40px;
+	padding-left: 5px;
+	background: #F3F3F3;
+	border: none;
+	border-radius: 4px;
+	outline: none;
+}
+
+.geoTag {
+	position: absolute;
+	margin-top: 10px;
+	margin-left: 140px;
 }
 
 .historyCity {
@@ -26,6 +43,7 @@
 	color: #444444;
 	width: 100%;
 	transition: all .3s;
+	cursor: pointer;
 }
 
 .historyCity p {
@@ -36,9 +54,7 @@
 	font-weight: normal;
 	font-size: 18px;
 	line-height: 22px;
-	/* identical to box height */
 
 	letter-spacing: -0.05em;
-
 	color: #444444;
 }

@@ -45,8 +45,5 @@ export const api = {
 	getWeekWeather(lat: number, lon: number) {
 		return instance.get(`onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,current&appid=${apiKey}`)
 		.then(res => res.data)
-	},
-	getCities(cityName: string) {
-		return instance.get(`find?q=${cityName}&units=metric&appid=${apiKey}`);
 	}
 };
