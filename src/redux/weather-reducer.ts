@@ -72,16 +72,17 @@ const initialState = {
 export const weatherReducer = (state: StateWeatherType = initialState, action: ActionsType) => {
 
 	switch (action.type) {
+		// сохраняю основные данные по выбранному городу для отрисовки
 		case GET_WEATHER:
 			return {
 				...state, weather: { ...action.weather }
 			};
-
+// сохраняю данные по дням недели
 		case WEEK_WEATHER:
 			return {
 				...state, weekWeather: [...action.weekWeather]
 			};
-
+// сохраняю данные по истории поиска
 		case HISTORY_SEARCH:
 
 			return {
@@ -96,20 +97,14 @@ export const weatherReducer = (state: StateWeatherType = initialState, action: A
 export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 	try {
 		let historySearchLS;
-		if (!localStorage.getItem('historySearchLS')) {
-			localStorage.setItem("historySearchLS", JSON.stringify([]));
-			return false;
-		} else {
-		historySearchLS = JSON.parse(localStorage.getItem('historySearchLS')!);
-	}
-
+// Создаю переменную для локал стореджа, делаю запрос за выбранным городом и запрос для дней недели
 		const data = await api.getWeather(city);
 		const weekWeather = await api.getWeekWeather(data.coord.lat, data.coord.lon);
-
+// Создаю переменные для удобства обработки данных в дальнейшем
 		const sunrise = dateСonvertation(data.sys.sunrise);
 		const sunset = dateСonvertation(data.sys.sunset);
 		const dayTime = dateСonvertation(data.dt);
-
+// Создаю объект, что будет храниться в локал стейте
 		const newData = {
 			success: true,
 			description: data.weather[0].description,
@@ -131,7 +126,7 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 			backgroundDayNight: data.dt > data.sys.sunrise && data.dt < data.sys.sunset
 		};
 
-
+// Создаю массив с объектами по дням недели
 		const weekWeatherData = weekWeather.daily.map((el: any) => {
 			return {
 				dt: el.dt,
@@ -140,13 +135,13 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 				tempMin: el.temp.min
 			}
 		})
-
+// Создаю объект для сохранения найденного города
 		const historySearchData = {
 			city: data.name,
 			country: data.sys.country,
 			temperature: Math.round(data.main.temp)
 		};
-
+// Сохраняю данные в локалсторедж и запускаю три диспатча для обновления данных в иницализированном стейте
 		localStorage.setItem('historySearchLS', JSON.stringify(historySearchData));
 		dispatch(getWeatherAC(newData));
 		dispatch(weekWeatherAC(weekWeatherData));

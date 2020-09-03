@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
 
-
+// Решил запихнуть в отдельный компонент, чтобы лучше смотрелось в главном компоненте))
 	const backgroundDayNight = useSelector((state: any) => state.weatherState.backgroundDayNight);
 
 	return (

@@ -5,7 +5,7 @@ import cloudy from '../../../assets/images/cloudy.png';
 import sunny from '../../../assets/images/sun.png' ;
 import { dateСonvertation } from '../../../assets/reusableJS';
 
-
+// Отрисовываю день недели и проверяю что приходит в пропсах. От меняю иконки, или цсс стили
 const DayWeek = React.memo((props: any) => {
 	const day = props.day;
 	const dayName = dateСonvertation(day.dt);

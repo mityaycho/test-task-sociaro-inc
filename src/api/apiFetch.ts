@@ -36,7 +36,7 @@ type GetWeatherType = {
 	wind: { speed: number, deg: number };
 };
 
-
+// Два запроса за погоодой Первый - основная погода по выбранному городу, Второй - с геолокацией для данных по дням недели
 export const api = {
 	getWeather(cityName: string) {
 		return instance.get<GetWeatherType>(`weather?q=${cityName}&units=metric&appid=${apiKey}`)

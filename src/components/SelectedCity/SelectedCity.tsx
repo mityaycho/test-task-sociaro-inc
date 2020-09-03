@@ -13,6 +13,7 @@ import { withRouter } from 'react-router-dom';
 const SelectedCity = React.memo((props: any) => {
 
 	const { weather, weekWeather } = useSelector((state: any) => state.weatherState);
+// Пробегаюсь по ключам и возвращаю массив, дальше фильтрую по определённм значениям возвращаю новый массив
 
 	const weatherCardsJSX = () => {
 		let keys = (Object.keys(weather)).map(key => key);
@@ -22,7 +23,7 @@ const SelectedCity = React.memo((props: any) => {
 			key !== 'country' &&
 			key !== 'error' &&
 			key !== 'dt');
-
+// Пробегаюсь по новому массиву и отрисовываю карточки
 		let weatherCardsArray = keysForRender.map(key => key !== 'backgroundDayNight' &&
 			<WeatherCard
 				key={uuidv4()}
@@ -32,9 +33,9 @@ const SelectedCity = React.memo((props: any) => {
 
 		return weatherCardsArray;
 	};
-
+// Оборачиваю милисекунды в функцию обработчик для более простой обработки
 	const date = dateСonvertation(weather.dt);
-
+// После нажатия на кнопку перехожу на страницу с историей поска
 	const changeRoute = useCallback(() => {
 		props.history.push('/');
 	}, [props.history]);
@@ -53,7 +54,7 @@ const SelectedCity = React.memo((props: any) => {
 					<div className={styles.weatherDescriptionsContainer}>
 						{weatherCardsJSX()}
 					</div>
-
+{/* отрисовка погоды по дням недели (не успел реализовать логику перехода на выбранный день) */}
 					<DayWeekContainer dayWeek={weekWeather}/>
 				</>
 			}

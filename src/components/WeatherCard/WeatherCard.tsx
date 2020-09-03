@@ -21,11 +21,11 @@ type WeatherCardPropsType = {
 	name: string;
 	description: Idescription;
 };
-
+// Карточка погоды
 const WeatherCard = React.memo((props: WeatherCardPropsType) => {
-
+	// Достаю из Редакс проверку отрисовки фона и иконки (день\ночь)
 	const backgroundDayNight = useSelector((state: any) => state.weatherState.backgroundDayNight);
-
+	// Делаю проверку на входные данные и меняю иконки и цсс стили
 	let iconSrc, unit;
 	let cls = '';
 	switch (props.name) {
@@ -65,8 +65,8 @@ const WeatherCard = React.memo((props: WeatherCardPropsType) => {
 		}
 		case 'description': {
 			backgroundDayNight ?
-			iconSrc = cloudyClearDay :
-			iconSrc = cloudyClearNight;
+				iconSrc = cloudyClearDay :
+				iconSrc = cloudyClearNight;
 			break;
 		}
 		case 'temperature': {
@@ -82,7 +82,7 @@ const WeatherCard = React.memo((props: WeatherCardPropsType) => {
 		}
 	};
 
-
+	// Отрисовка главной иконки с погодой
 	let descriptionTitle = typeof props.description !== 'object' ?
 		props.description :
 		<div className={styles.tempMinMax}>
@@ -96,7 +96,7 @@ const WeatherCard = React.memo((props: WeatherCardPropsType) => {
 				props.name !== 'temperature' &&
 				props.name !== 'temperatureChange' &&
 				<span className={props.name !== 'description' ? styles.icon : styles.backgroundDayNightIMG}>
-					 <img src={iconSrc} alt={`icon ${props.name}`} />
+					<img src={iconSrc} alt={`icon ${props.name}`} />
 				</span>
 			}
 
