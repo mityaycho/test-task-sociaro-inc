@@ -9,7 +9,7 @@ const Header = () => {
 	const backgroundDayNight = useSelector((state: any) => state.weatherState.backgroundDayNight);
 
 	return (
-		<div className={`${styles.header} ${backgroundDayNight ? styles.day : styles.night}`}></div>
+		<span className={`${styles.header} ${backgroundDayNight ? styles.day : styles.night}`}></span>
 	);
 };
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styles from './HistorySearch.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
@@ -6,6 +6,7 @@ import { getWeatherTC } from '../../redux/weather-reducer';
 import { Typeahead } from '@gforge/react-typeahead-ts';
 import geoTagInput from './../../assets/images/geo-tag-black.png';
 import { withRouter } from 'react-router-dom';
+import { historySearchAC } from '../../redux/actions';
 
 // Отрисовка истории поиска
 const SearchHistory = React.memo((props: any) => {
@@ -13,6 +14,9 @@ const SearchHistory = React.memo((props: any) => {
 	const dispatch = useDispatch();
 	const { historySearch } = useSelector((state: any) => state.weatherState);
 	const [citySelected, setCitySelected] = useState('');
+	useEffect(() => {
+		dispatch(historySearchAC(JSON.parse(localStorage.getItem('historySearchLS') || '[]')))
+	}, [dispatch]);
 // Диспатчу выбранный город и перехожу на страницу с выбранным городом
 	const selectedCityOnOptions = useCallback((e: any) => {
 		dispatch(getWeatherTC(e));

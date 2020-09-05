@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 import HistorySearch from '../HistorySearch/HistorySearch';
 
 const App = () => {
-
+// Главный компонент с роутами по двум страницам, погоды и истории поиска. И фон, меняется по восходу и закату солнца
 	return (
 		<div className={styles.App}>
 			<section className={styles.AppContainer}>
