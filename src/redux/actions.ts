@@ -40,12 +40,16 @@ type DeleteHistoryCityACType = {
 };
 export const deleteHistoryCityAC = (city: string): DeleteHistoryCityACType => ({ type: DELETE_CITY, city });
 
-
-type CitiesReducerACType = {
-	type: typeof FIND_CITIES;
-	findCities: any
+type SitiesType = {
+	city: undefined | string;
+	country: undefined | string;
 };
-export const findCitiesAC = (findCities: any): CitiesReducerACType => ({ type: FIND_CITIES, findCities })
+export type CitiesReducerACType = {
+	type: typeof FIND_CITIES;
+	findCities: Array<SitiesType>
+};
+export const findCitiesAC = (findCities: Array<SitiesType>): CitiesReducerACType => ({ 
+	type: FIND_CITIES, findCities })
 
 
 

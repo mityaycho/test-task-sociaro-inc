@@ -42,13 +42,14 @@ const HistorySearch = React.memo((props: any) => {
 
 	// Выбираю город из списка, пинаю сервер и делаю переход на новую страницу
 	const setActiveOrDeleteCity = useCallback((e) => {
+		// Делаю проверку где произошёл клик, если на кнопке выбрать город, пинаю сервер и отрисовываю
 		if (e.target.dataset.active === 'active') {
 			console.log('active')
 			dispatch(getWeatherTC(e.target.dataset.city));
 			props.history.push('selectedCity');
 		}
+		// Делаю проверку на кнопку удаления и пинаю санку, где всё обновляю
 		if (e.target.dataset.button === 'delete') {
-			localStorage.setItem('historySearchLS', JSON.stringify([]));
 			dispatch(deleteHistoryCityAC(e.currentTarget.dataset.city));
 		}
 	}, [props.history, dispatch]);
@@ -74,7 +75,7 @@ const HistorySearch = React.memo((props: any) => {
 			<img className={styles.geoTag} src={geoTagInput} alt="icon geo-tag" />
 			<Typeahead
 				className={styles.inputTypeahead}
-				options={findCities.map((el: any) => el.city)}
+				options={findCities.map((el: any) => `${el.city}, ${el.country}`)}
 				placeholder="Search city"
 				value={citySelected}
 				onChange={searchCities}

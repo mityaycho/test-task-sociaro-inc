@@ -70,13 +70,14 @@ export const weatherReducer = (state: StateWeatherType = initialState, action: A
 				...state, historySearch: action.historySearch
 			};
 
-			case DELETE_CITY:
-				const newArrayWithoutDeleteCity = state.historySearch.filter(el => el.city !== action.city);
-				localStorage.setItem('historySearchLS', JSON.stringify(newArrayWithoutDeleteCity));
-				return {
-					...state, historySearch: newArrayWithoutDeleteCity
-				};
-	
+		case DELETE_CITY:
+			const newArrayWithoutDeleteCity = state.historySearch.filter(el => el.city !== action.city);
+			localStorage.setItem('historySearchLS', JSON.stringify([]));
+			localStorage.setItem('historySearchLS', JSON.stringify(newArrayWithoutDeleteCity));
+			return {
+				...state, historySearch: newArrayWithoutDeleteCity
+			};
+
 		default:
 			return state;
 	};

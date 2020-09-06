@@ -1,7 +1,6 @@
 import { api } from "../api/apiFetch";
 import { Dispatch } from 'redux';
-import { FIND_CITIES, findCitiesAC } from "./actions";
-
+import { FIND_CITIES, findCitiesAC, CitiesReducerACType } from "./actions";
 
 type StateFindCitiesType = typeof initialState;
 
@@ -12,8 +11,8 @@ const initialState = {
 	}]
 };
 
-
-export const citiesReducer = (state: StateFindCitiesType = initialState, action: any) => {
+// Создаю отдельный стейт для хранения найденных городов, для выбора в выпадашке
+export const citiesReducer = (state: StateFindCitiesType = initialState, action: CitiesReducerACType) => {
 
 	switch (action.type) {
 		case FIND_CITIES:
@@ -26,6 +25,7 @@ export const citiesReducer = (state: StateFindCitiesType = initialState, action:
 			return state;
 	};
 };
+
 export const getCitiesTC = (cityName: string) => async (dispatch: Dispatch) => {
 	try {
 			const response = await api.getCities(cityName);
