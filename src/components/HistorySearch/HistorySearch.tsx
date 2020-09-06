@@ -40,10 +40,7 @@ const SearchHistory = React.memo((props: any) => {
 	const selectedCityJSX = historySearch.map((el: any) =>
 		<li key={uuidv4()} className={styles.historyCity} onClick={setOrDeleteCity}>
 			<p data-city={el.city}>{el.city}, {el.country}</p>
-			{/* <div className={styles.buttons}>
-				<button>open</button>
-				<button>delete</button>
-			</div> */}
+			<button className={styles.buttonDelete}>delete</button>
 			<p>{el.temperature}&#176;C</p>
 		</li>);
 

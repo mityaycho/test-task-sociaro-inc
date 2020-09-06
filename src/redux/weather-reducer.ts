@@ -41,8 +41,8 @@ export type StateWeatherType = {
 		daytime: undefined | string;
 		dt: undefined | string;
 		error: undefined | string;
+		backgroundDayNight: boolean;
 	};
-	backgroundDayNight: boolean;
 	weekWeather: Array<WeekWeatherType>;
 	historySearch: Array<historySearchType>;
 };
@@ -62,9 +62,9 @@ const initialState = {
 		sunset: undefined,
 		daytime: undefined,
 		dt: undefined,
-		error: undefined
+		error: undefined,
+		backgroundDayNight: true
 	},
-	backgroundDayNight: true,
 	weekWeather: [],
 	historySearch: []
 };
@@ -75,7 +75,7 @@ export const weatherReducer = (state: StateWeatherType = initialState, action: A
 		// сохраняю основные данные по выбранному городу для отрисовки
 		case GET_WEATHER:
 			return {
-				...state, weather: { ...action.weather }, backgroundDayNight: action.weather.backgroundDayNight
+				...state, weather: { ...action.weather }
 			};
 		// сохраняю данные по дням недели
 		case WEEK_WEATHER:

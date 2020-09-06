@@ -30,6 +30,11 @@
 	cursor: pointer;
 }
 
+.infoCityContainer:hover {
+	background-color: rgb(200, 231, 250);
+	transition: background-color 0.5s;
+}
+
 .infoCityCountry {
 	font-family: Barlow;
 	font-style: normal;
