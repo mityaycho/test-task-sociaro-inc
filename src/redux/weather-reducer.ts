@@ -25,48 +25,28 @@ export type historySearchType = {
 	temperature: any;
 }
 
-export type StateWeatherType = {
-	weather: {
-		success: boolean;
-		description: undefined | string;
-		temperature: undefined | number;
-		temperatureChange: undefined;
-		city: undefined | string;
-		country: undefined | string;
-		humidity: undefined | string;
-		pressure: undefined | string;
-		wind: undefined | string;
-		sunrise: undefined | string;
-		sunset: undefined | string;
-		daytime: undefined | string;
-		dt: undefined | string;
-		error: undefined | string;
-		backgroundDayNight: boolean;
-	};
-	weekWeather: Array<WeekWeatherType>;
-	historySearch: Array<historySearchType>;
-};
+type StateWeatherType = typeof initialState;
 
 const initialState = {
 	weather: {
-		success: false,
-		description: undefined,
-		temperature: undefined,
-		temperatureChange: undefined,
-		city: undefined,
-		country: undefined,
-		humidity: undefined,
-		pressure: undefined,
-		wind: undefined,
-		sunrise: undefined,
-		sunset: undefined,
-		daytime: undefined,
-		dt: undefined,
-		error: undefined,
-		backgroundDayNight: true
+		success: false as boolean,
+		description: undefined as undefined | string,
+		temperature: undefined as undefined | number,
+		temperatureChange: undefined as undefined,
+		city: undefined as undefined | string,
+		country: undefined as undefined | string,
+		humidity: undefined as undefined | string,
+		pressure: undefined as undefined | string,
+		wind: undefined as undefined | string,
+		sunrise: undefined as undefined | string,
+		sunset: undefined as undefined | string,
+		daytime: undefined as undefined | string,
+		dt: undefined as undefined | string,
+		error: undefined as undefined | string,
+		backgroundDayNight: true as boolean
 	},
-	weekWeather: [],
-	historySearch: []
+	weekWeather: [] as Array<WeekWeatherType>,
+	historySearch: [] as Array<historySearchType>
 };
 
 export const weatherReducer = (state: StateWeatherType = initialState, action: ActionsType) => {
@@ -147,12 +127,14 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 			temperature: Math.round(data.main.temp)
 		};
 		// Сохраняю данные в локалсторедж и запускаю три диспатча для обновления данных в иницализированном стейте
-		!historySearchLS ? 
-		localStorage.setItem('historySearchLS', JSON.stringify([historySearchData])) :
-		localStorage.setItem('historySearchLS', JSON.stringify([historySearchData, ...historySearchLS]));
+		!historySearchLS ?
+			localStorage.setItem('historySearchLS', JSON.stringify([historySearchData])) :
+			localStorage.setItem('historySearchLS', JSON.stringify([historySearchData, ...historySearchLS]));
 		dispatch(getWeatherAC(newData));
 		dispatch(weekWeatherAC(weekWeatherData));
-		historySearchLS ? dispatch(historySearchAC([historySearchData, ...historySearchLS])) : dispatch(historySearchAC([historySearchData]));
+		historySearchLS ?
+			dispatch(historySearchAC([historySearchData, ...historySearchLS])) :
+			dispatch(historySearchAC([historySearchData]));
 	} catch (error) {
 		return error;
 	}

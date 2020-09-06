@@ -1,9 +1,3 @@
-.historyList {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
 .locationTitle {
 	position: relative;
 	font-family: Barlow;
@@ -17,6 +11,7 @@
 }
 
 .inputTypeahead input {
+	position: relative;
 	width: 335px;
 	height: 40px;
 	padding-left: 5px;
@@ -27,8 +22,31 @@
 }
 
 .inputTypeahead input:hover {
-background-color: rgb(230, 230, 230);
+	background-color: rgb(230, 230, 230);
 	transition: background-color 0.5s;
+}
+
+.inputTypeahead ul {
+	position: absolute;
+	margin: 0;
+	background: #ffffff;
+	z-index: 1;
+}
+
+.inputTypeahead li {
+	list-style: none;
+	border: none;
+	background: #F3F3F3;
+	padding: 7px;
+	width: 335px;
+	margin-left: -20px;
+	border-radius: 4px;
+}
+
+.inputTypeahead li:hover {
+	background-color: rgb(230, 230, 230);
+	transition: background-color 0.2s;
+	cursor: pointer;
 }
 
 .geoTag {
@@ -37,17 +55,23 @@ background-color: rgb(230, 230, 230);
 	margin-left: 140px;
 }
 
-.historyCity {
+.historyList {
+	display: flex;
+	flex-direction: column;
+}
+
+.historyList li {
 	display: flex;
 	padding: 9px;
 	font-weight: 500;
 	font-size: 18px;
 	line-height: 22px;
 	color: #444444;
-	cursor: pointer;
+	margin-left: -20px;
+	margin-right: 20px;
 }
 
-.historyCity:hover {
+.historyList li:hover {
 	background-color: rgb(200, 231, 250);
 	transition: background-color 0.5s;
 }
@@ -59,6 +83,7 @@ background-color: rgb(230, 230, 230);
 	padding: 0 20px;
 	border-radius: 10px;
 	border: none;
+	outline: none;
 }
 
 .buttonDelete:hover {
@@ -66,13 +91,13 @@ background-color: rgb(230, 230, 230);
 	cursor: pointer;
 }
 
-.historyCity:hover .buttonDelete {
+.historyList li:hover .buttonDelete {
 	opacity: 1;
 	transition: opacity 0.5s;
 
 }
 
-.historyCity p {
+.historyList p {
 	margin: 0 10px 0 10px;
 	padding: 0;
 	font-family: Barlow;
@@ -83,4 +108,8 @@ background-color: rgb(230, 230, 230);
 
 	letter-spacing: -0.05em;
 	color: #444444;
+}
+
+.historyList  p:nth-child(1) {
+	cursor: pointer;
 }

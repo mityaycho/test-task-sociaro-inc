@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, MouseEvent } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styles from './HistorySearch.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,36 +11,54 @@ import { historySearchAC } from '../../redux/actions';
 // Отрисовка истории поиска
 const SearchHistory = React.memo((props: any) => {
 	// Забираю историю найденных городов из Редакс и создаю переменную в локальном стейте
+
 	const dispatch = useDispatch();
 	const { historySearch } = useSelector((state: any) => state.weatherState);
 	const [citySelected, setCitySelected] = useState('');
 	useEffect(() => {
 		dispatch(historySearchAC(JSON.parse(localStorage.getItem('historySearchLS') || '[]')))
 	}, [dispatch]);
+
 	// Диспатчу выбранный город и перехожу на страницу с выбранным городом
 	const selectedCityOnOptions = useCallback((e: any) => {
 		dispatch(getWeatherTC(e));
 		props.history.push('selectedCity');
 	}, [props.history, dispatch]);
+
 	// Сохраняю введённые значения в локальном стейте
 	const searchCities = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		setCitySelected(e.currentTarget.value);
 	}, []);
+
 	// Проверяю нажата ли кнопка ВВОД и дальше диспатчу и перехожу на страницу с городом
 	const keyPressEnter = useCallback((e: React.KeyboardEvent) => {
 		e.key === "Enter" && dispatch(getWeatherTC(citySelected));
 		e.key === "Enter" && props.history.push('selectedCity');
 	}, [props.history, citySelected, dispatch]);
 
-	const setOrDeleteCity = useCallback((e) => {
-		dispatch(getWeatherTC(e.target.dataset.city));
-		props.history.push('selectedCity');
+	// Выбираю город из списка, пинаю сервер и делаю переход на новую страницу
+	const setActiveOrDeleteCity = useCallback((e) => {
+		if (e.target.dataset.active === 'active') {
+			console.log('active')
+			dispatch(getWeatherTC(e.target.dataset.city));
+			props.history.push('selectedCity');
+		}
+		if (e.target.dataset.button === 'delete') {
+			console.log('delete')
+		}
 	}, [props.history, dispatch]);
+
 	// Отрисовка найденного города и далее запихиваю их в список с найденными городами
 	const selectedCityJSX = historySearch.map((el: any) =>
-		<li key={uuidv4()} className={styles.historyCity} onClick={setOrDeleteCity}>
-			<p data-city={el.city}>{el.city}, {el.country}</p>
-			<button className={styles.buttonDelete}>delete</button>
+		<li
+			key={uuidv4()}
+			onClick={setActiveOrDeleteCity}>
+			<p data-city={el.city} data-active="active">{el.city}, {el.country}</p>
+			<button
+				className={styles.buttonDelete}
+				data-button="delete">
+				delete
+			</button>
 			<p>{el.temperature}&#176;C</p>
 		</li>);
 
@@ -56,8 +74,9 @@ const SearchHistory = React.memo((props: any) => {
 				onChange={searchCities}
 				onKeyDown={keyPressEnter}
 				onOptionSelected={selectedCityOnOptions} />
-			<ul className={styles.historyList}></ul>
-			{selectedCityJSX}
+			<ul className={styles.historyList}>
+				{selectedCityJSX}
+			</ul>
 		</div>
 	);
 });
