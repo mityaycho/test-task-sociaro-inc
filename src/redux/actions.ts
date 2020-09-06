@@ -2,6 +2,7 @@ export const GET_WEATHER = 'reducers/GET_WEATHER';
 export const GET_WEEK_WEATHER = 'reducers/GET_WEEK_WEATHER';
 export const WEEK_WEATHER = 'reducers/WEEK_WEATHER';
 export const HISTORY_SEARCH = 'reducers/HISTORY_SEARCH';
+export const DELETE_CITY = 'reducers/DELETE_CITY';
 
 
 type GetWeatherACType = {
@@ -31,6 +32,12 @@ type HistorySearchACType = {
 };
 export const historySearchAC = (historySearch: any): HistorySearchACType => ({ type: HISTORY_SEARCH, historySearch });
 
+type DeleteHistoryCityACType = {
+	type: typeof DELETE_CITY;
+	city: string;
+};
+export const deleteHistoryCityAC = (city: string): DeleteHistoryCityACType => ({ type: DELETE_CITY, city });
 
 
-export type ActionsType = GetWeatherACType | WeekWeatherACType | HistorySearchACType;
+
+export type ActionsType = GetWeatherACType | WeekWeatherACType | HistorySearchACType | DeleteHistoryCityACType;
