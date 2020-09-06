@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "63e2b0e80d2eb8fee46b064d16bbe079",
+    "revision": "b0e824468738ffe55ff32102c97e6df6",
     "url": "/test-task-sociaro-inc/index.html"
   },
   {
-    "revision": "29a83ed2042b7524fdc1",
-    "url": "/test-task-sociaro-inc/static/css/main.4b915779.chunk.css"
+    "revision": "7388bcea6699643982cc",
+    "url": "/test-task-sociaro-inc/static/css/main.7f01743d.chunk.css"
   },
   {
-    "revision": "699093bef4a3250ad5ef",
-    "url": "/test-task-sociaro-inc/static/js/2.f7aa45e0.chunk.js"
+    "revision": "324c7a2c7c608c103ca3",
+    "url": "/test-task-sociaro-inc/static/js/2.e20f598d.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/test-task-sociaro-inc/static/js/2.f7aa45e0.chunk.js.LICENSE.txt"
+    "url": "/test-task-sociaro-inc/static/js/2.e20f598d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "29a83ed2042b7524fdc1",
-    "url": "/test-task-sociaro-inc/static/js/main.3120f173.chunk.js"
+    "revision": "7388bcea6699643982cc",
+    "url": "/test-task-sociaro-inc/static/js/main.b4ac4b8a.chunk.js"
   },
   {
     "revision": "f56caa2728e05dc0b4dd",
