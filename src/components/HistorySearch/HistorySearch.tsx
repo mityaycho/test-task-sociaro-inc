@@ -6,14 +6,16 @@ import { getWeatherTC } from '../../redux/weather-reducer';
 import { Typeahead } from '@gforge/react-typeahead-ts';
 import geoTagInput from './../../assets/images/geo-tag-black.png';
 import { withRouter } from 'react-router-dom';
-import { historySearchAC } from '../../redux/actions';
+import { historySearchAC, deleteHistoryCityAC } from '../../redux/actions';
+import { getCitiesTC } from '../../redux/findCities-reducer';
 
 // Отрисовка истории поиска
-const SearchHistory = React.memo((props: any) => {
+const HistorySearch = React.memo((props: any) => {
 	// Забираю историю найденных городов из Редакс и создаю переменную в локальном стейте
 
 	const dispatch = useDispatch();
-	const { historySearch } = useSelector((state: any) => state.weatherState);
+	const historySearch = useSelector((state: any) => state.weatherState.historySearch);
+	const findCities = useSelector((state: any) => state.citiesState.cities);
 	const [citySelected, setCitySelected] = useState('');
 	useEffect(() => {
 		dispatch(historySearchAC(JSON.parse(localStorage.getItem('historySearchLS') || '[]')))
@@ -23,12 +25,14 @@ const SearchHistory = React.memo((props: any) => {
 	const selectedCityOnOptions = useCallback((e: any) => {
 		dispatch(getWeatherTC(e));
 		props.history.push('selectedCity');
+		setCitySelected('')
 	}, [props.history, dispatch]);
 
 	// Сохраняю введённые значения в локальном стейте
 	const searchCities = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		setCitySelected(e.currentTarget.value);
-	}, []);
+		dispatch(getCitiesTC(e.currentTarget.value));
+	}, [dispatch]);
 
 	// Проверяю нажата ли кнопка ВВОД и дальше диспатчу и перехожу на страницу с городом
 	const keyPressEnter = useCallback((e: React.KeyboardEvent) => {
@@ -44,7 +48,8 @@ const SearchHistory = React.memo((props: any) => {
 			props.history.push('selectedCity');
 		}
 		if (e.target.dataset.button === 'delete') {
-			console.log('delete')
+			localStorage.setItem('historySearchLS', JSON.stringify([]));
+			dispatch(deleteHistoryCityAC(e.currentTarget.dataset.city));
 		}
 	}, [props.history, dispatch]);
 
@@ -52,8 +57,9 @@ const SearchHistory = React.memo((props: any) => {
 	const selectedCityJSX = historySearch.map((el: any) =>
 		<li
 			key={uuidv4()}
+			data-city={el.city} 
 			onClick={setActiveOrDeleteCity}>
-			<p data-city={el.city} data-active="active">{el.city}, {el.country}</p>
+			<p data-active="active">{el.city}, {el.country}</p>
 			<button
 				className={styles.buttonDelete}
 				data-button="delete">
@@ -68,7 +74,7 @@ const SearchHistory = React.memo((props: any) => {
 			<img className={styles.geoTag} src={geoTagInput} alt="icon geo-tag" />
 			<Typeahead
 				className={styles.inputTypeahead}
-				options={historySearch.map((el: any) => el.city)}
+				options={findCities.map((el: any) => el.city)}
 				placeholder="Search city"
 				value={citySelected}
 				onChange={searchCities}
@@ -81,4 +87,4 @@ const SearchHistory = React.memo((props: any) => {
 	);
 });
 
-export default withRouter(SearchHistory);
+export default withRouter(HistorySearch);

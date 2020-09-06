@@ -5,7 +5,8 @@ import {
 	WEEK_WEATHER,
 	weekWeatherAC,
 	historySearchAC,
-	HISTORY_SEARCH
+	HISTORY_SEARCH,
+	DELETE_CITY
 } from "./actions";
 import { api } from "../api/apiFetch";
 import { Dispatch } from 'redux';
@@ -69,6 +70,13 @@ export const weatherReducer = (state: StateWeatherType = initialState, action: A
 				...state, historySearch: action.historySearch
 			};
 
+			case DELETE_CITY:
+				const newArrayWithoutDeleteCity = state.historySearch.filter(el => el.city !== action.city);
+				localStorage.setItem('historySearchLS', JSON.stringify(newArrayWithoutDeleteCity));
+				return {
+					...state, historySearch: newArrayWithoutDeleteCity
+				};
+	
 		default:
 			return state;
 	};
