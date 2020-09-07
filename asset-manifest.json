@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/test-task-sociaro-inc/static/css/main.7f01743d.chunk.css",
-    "main.js": "/test-task-sociaro-inc/static/js/main.b4ac4b8a.chunk.js",
-    "main.js.map": "/test-task-sociaro-inc/static/js/main.b4ac4b8a.chunk.js.map",
+    "main.css": "/test-task-sociaro-inc/static/css/main.dba65acc.chunk.css",
+    "main.js": "/test-task-sociaro-inc/static/js/main.d071cef2.chunk.js",
+    "main.js.map": "/test-task-sociaro-inc/static/js/main.d071cef2.chunk.js.map",
     "runtime-main.js": "/test-task-sociaro-inc/static/js/runtime-main.0dc8a17c.js",
     "runtime-main.js.map": "/test-task-sociaro-inc/static/js/runtime-main.0dc8a17c.js.map",
-    "static/js/2.e20f598d.chunk.js": "/test-task-sociaro-inc/static/js/2.e20f598d.chunk.js",
-    "static/js/2.e20f598d.chunk.js.map": "/test-task-sociaro-inc/static/js/2.e20f598d.chunk.js.map",
+    "static/js/2.b9b4b075.chunk.js": "/test-task-sociaro-inc/static/js/2.b9b4b075.chunk.js",
+    "static/js/2.b9b4b075.chunk.js.map": "/test-task-sociaro-inc/static/js/2.b9b4b075.chunk.js.map",
     "index.html": "/test-task-sociaro-inc/index.html",
-    "precache-manifest.6584429d1bd078ac787b3a2486bea4b1.js": "/test-task-sociaro-inc/precache-manifest.6584429d1bd078ac787b3a2486bea4b1.js",
+    "precache-manifest.707270f2fad28fc1056c857d04b4ee1a.js": "/test-task-sociaro-inc/precache-manifest.707270f2fad28fc1056c857d04b4ee1a.js",
     "service-worker.js": "/test-task-sociaro-inc/service-worker.js",
-    "static/css/main.7f01743d.chunk.css.map": "/test-task-sociaro-inc/static/css/main.7f01743d.chunk.css.map",
-    "static/js/2.e20f598d.chunk.js.LICENSE.txt": "/test-task-sociaro-inc/static/js/2.e20f598d.chunk.js.LICENSE.txt",
+    "static/css/main.dba65acc.chunk.css.map": "/test-task-sociaro-inc/static/css/main.dba65acc.chunk.css.map",
+    "static/js/2.b9b4b075.chunk.js.LICENSE.txt": "/test-task-sociaro-inc/static/js/2.b9b4b075.chunk.js.LICENSE.txt",
     "static/media/Header.module.css": "/test-task-sociaro-inc/static/media/background-night.55a8d67e.png",
     "static/media/preloader.gif": "/test-task-sociaro-inc/static/media/preloader.8a9fe384.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.0dc8a17c.js",
-    "static/js/2.e20f598d.chunk.js",
-    "static/css/main.7f01743d.chunk.css",
-    "static/js/main.b4ac4b8a.chunk.js"
+    "static/js/2.b9b4b075.chunk.js",
+    "static/css/main.dba65acc.chunk.css",
+    "static/js/main.d071cef2.chunk.js"
   ]
 }
