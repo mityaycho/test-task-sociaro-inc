@@ -23,8 +23,10 @@ type WeatherCardPropsType = {
 };
 // Карточка погоды
 const WeatherCard = React.memo((props: WeatherCardPropsType) => {
+	
 	// Достаю из Редакс проверку отрисовки фона и иконки (день\ночь)
 	const backgroundDayNight = useSelector((state: any) => state.weatherState.backgroundDayNight);
+
 	// Делаю проверку на входные данные и меняю иконки и цсс стили
 	let iconSrc, unit;
 	let cls = '';

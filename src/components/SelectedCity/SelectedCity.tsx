@@ -15,30 +15,31 @@ const SelectedCity = React.memo((props: any) => {
 
 	const dispatch = useDispatch();
 	const { weather, weekWeather } = useSelector((state: any) => state.weatherState);
-
+	// Добавляю анимацию когда компонент смонтирован
 	useEffect(() => {
 		dispatch(searchPageAC(true));
 	}, [dispatch]);
-	
+
 	// Оборачиваю милисекунды в функцию обработчик для более простой обработки
 	const date = dateСonvertation(weather.dt);
+
 	// После нажатия на кнопку перехожу на страницу с историей поска
 	const changeRoute = useCallback(() => {
 		props.history.push('/');
 	}, [props.history]);
 
-	// Пробегаюсь по ключам и возвращаю массив, дальше фильтрую по определённм значениям возвращаю новый массив
-
+	// Пробегаюсь по ключам и возвращаю массив, дальше фильтрую по определённым значениям возвращаю новый массив
 	const weatherCardsJSX = () => {
 		let keys = (Object.keys(weather)).map(key => key);
-		let keysForRender = keys.filter((key) =>
+		let keysFiltered = keys.filter((key) =>
 			key !== 'success' &&
 			key !== 'city' &&
 			key !== 'country' &&
 			key !== 'error' &&
 			key !== 'dt');
+
 		// Пробегаюсь по новому массиву и отрисовываю карточки
-		let weatherCardsArray = keysForRender.map(key => key !== 'backgroundDayNight' &&
+		let weatherCardsArray = keysFiltered.map(key => key !== 'backgroundDayNight' &&
 			<WeatherCard
 				key={uuidv4()}
 				name={key}
@@ -51,7 +52,15 @@ const SelectedCity = React.memo((props: any) => {
 	return (
 		<div className={styles.selectedCity}>
 			{!weather.success ?
-				<img src={preloaderIMG} alt="preloader img" /> :
+				<>
+					<div className={styles.infoHead}>
+						<p className={styles.infoDateTime}>{date.day ? `${date.day}, ${date.numberOfMonths} ${date.month} ${date.year} | ${date.hour}:${date.minute}` : ''}</p>
+						<span className={styles.infoCityContainer} onClick={changeRoute}>
+							<p className={styles.infoCityCountry}>{`${weather.city || 'find'}, ${weather.country || 'city'}`} <img src={geoTag} alt="icon geo tag" /></p>
+						</span>
+					</div>
+					<img src={preloaderIMG} alt="preloader img" />
+				</> :
 				<>
 					<div className={styles.infoHead}>
 						<p className={styles.infoDateTime}>{`${date.day}, ${date.numberOfMonths} ${date.month} ${date.year} | ${date.hour}:${date.minute}`}</p>

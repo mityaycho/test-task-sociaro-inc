@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 const App = () => {
 
 	const searchPageActual = useSelector((state: any) => state.weatherState.searchPage);
-	console.log(searchPageActual)
+	// На 18 строке делаю проверку для анимации страниц
 	return (
 		<div className={styles.App}>
 			<section className={styles.AppContainer}>

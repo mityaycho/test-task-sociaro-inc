@@ -17,6 +17,7 @@ const HistorySearch = React.memo((props: any) => {
 	const historySearch = useSelector((state: any) => state.weatherState.historySearch);
 	const findCities = useSelector((state: any) => state.citiesState.cities);
 	const [citySelected, setCitySelected] = useState('');
+	// Ставлю на монтирование компонента обновление данных из локального стейта браузера и добавляю анимацию
 	useEffect(() => {
 		dispatch(historySearchAC(JSON.parse(localStorage.getItem('historySearchLS') || '[]')));
 		dispatch(searchPageAC(false));
