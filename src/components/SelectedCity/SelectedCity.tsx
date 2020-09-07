@@ -1,19 +1,33 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styles from './SelectedCity.module.css';
 import geoTag from './../../assets/images/geo-tag.png';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import preloaderIMG from './../../assets/images/preloader.gif'
 import { dateСonvertation } from '../../assets/reusableJS';
 import { v4 as uuidv4 } from 'uuid';
 import DayWeekContainer from '../DayWeekContainer/DayWeekContainer';
 import { withRouter } from 'react-router-dom';
+import { searchPageAC } from '../../redux/actions';
 
 
 const SelectedCity = React.memo((props: any) => {
 
+	const dispatch = useDispatch();
 	const { weather, weekWeather } = useSelector((state: any) => state.weatherState);
-// Пробегаюсь по ключам и возвращаю массив, дальше фильтрую по определённм значениям возвращаю новый массив
+
+	useEffect(() => {
+		dispatch(searchPageAC(true));
+	}, [dispatch]);
+	
+	// Оборачиваю милисекунды в функцию обработчик для более простой обработки
+	const date = dateСonvertation(weather.dt);
+	// После нажатия на кнопку перехожу на страницу с историей поска
+	const changeRoute = useCallback(() => {
+		props.history.push('/');
+	}, [props.history]);
+
+	// Пробегаюсь по ключам и возвращаю массив, дальше фильтрую по определённм значениям возвращаю новый массив
 
 	const weatherCardsJSX = () => {
 		let keys = (Object.keys(weather)).map(key => key);
@@ -23,7 +37,7 @@ const SelectedCity = React.memo((props: any) => {
 			key !== 'country' &&
 			key !== 'error' &&
 			key !== 'dt');
-// Пробегаюсь по новому массиву и отрисовываю карточки
+		// Пробегаюсь по новому массиву и отрисовываю карточки
 		let weatherCardsArray = keysForRender.map(key => key !== 'backgroundDayNight' &&
 			<WeatherCard
 				key={uuidv4()}
@@ -33,12 +47,6 @@ const SelectedCity = React.memo((props: any) => {
 
 		return weatherCardsArray;
 	};
-// Оборачиваю милисекунды в функцию обработчик для более простой обработки
-	const date = dateСonvertation(weather.dt);
-// После нажатия на кнопку перехожу на страницу с историей поска
-	const changeRoute = useCallback(() => {
-		props.history.push('/');
-	}, [props.history]);
 
 	return (
 		<div className={styles.selectedCity}>
@@ -54,8 +62,8 @@ const SelectedCity = React.memo((props: any) => {
 					<div className={styles.weatherDescriptionsContainer}>
 						{weatherCardsJSX()}
 					</div>
-{/* отрисовка погоды по дням недели (не успел реализовать логику перехода на выбранный день) */}
-					<DayWeekContainer dayWeek={weekWeather}/>
+					{/* отрисовка погоды по дням недели (не успел реализовать логику перехода на выбранный день) */}
+					<DayWeekContainer dayWeek={weekWeather} />
 				</>
 			}
 		</div>

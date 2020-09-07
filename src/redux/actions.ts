@@ -4,6 +4,7 @@ export const WEEK_WEATHER = 'reducers/WEEK_WEATHER';
 export const HISTORY_SEARCH = 'reducers/HISTORY_SEARCH';
 export const DELETE_CITY = 'reducers/DELETE_CITY';
 export const FIND_CITIES = 'reducers/FIND_CITIES';
+export const SEARCH_PAGE = 'reducers/SEARCH_PAGE';
 
 
 type GetWeatherACType = {
@@ -40,17 +41,26 @@ type DeleteHistoryCityACType = {
 };
 export const deleteHistoryCityAC = (city: string): DeleteHistoryCityACType => ({ type: DELETE_CITY, city });
 
+
 type SitiesType = {
 	city: undefined | string;
 	country: undefined | string;
 };
 export type CitiesReducerACType = {
 	type: typeof FIND_CITIES;
-	findCities: Array<SitiesType>
+	findCities: Array<SitiesType>;
 };
-export const findCitiesAC = (findCities: Array<SitiesType>): CitiesReducerACType => ({ 
-	type: FIND_CITIES, findCities })
+export const findCitiesAC = (findCities: Array<SitiesType>): CitiesReducerACType => ({
+	type: FIND_CITIES, findCities
+});
+
+
+type SearchPageACType = {
+	type: typeof SEARCH_PAGE;
+	searchPage: boolean;
+};
+export const searchPageAC = (searchPage: boolean): SearchPageACType => ({ type: SEARCH_PAGE, searchPage });
 
 
 
-export type ActionsType = GetWeatherACType | WeekWeatherACType | HistorySearchACType | DeleteHistoryCityACType;
+export type ActionsType = GetWeatherACType | WeekWeatherACType | HistorySearchACType | DeleteHistoryCityACType | SearchPageACType;

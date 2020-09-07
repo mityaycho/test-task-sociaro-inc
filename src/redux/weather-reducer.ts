@@ -6,7 +6,8 @@ import {
 	weekWeatherAC,
 	historySearchAC,
 	HISTORY_SEARCH,
-	DELETE_CITY
+	DELETE_CITY,
+	SEARCH_PAGE
 } from "./actions";
 import { api } from "../api/apiFetch";
 import { Dispatch } from 'redux';
@@ -47,7 +48,8 @@ const initialState = {
 		backgroundDayNight: true as boolean
 	},
 	weekWeather: [] as Array<WeekWeatherType>,
-	historySearch: [] as Array<historySearchType>
+	historySearch: [] as Array<historySearchType>,
+	searchPage: true as boolean
 };
 
 export const weatherReducer = (state: StateWeatherType = initialState, action: ActionsType) => {
@@ -65,17 +67,20 @@ export const weatherReducer = (state: StateWeatherType = initialState, action: A
 			};
 		// сохраняю данные по истории поиска
 		case HISTORY_SEARCH:
-
 			return {
 				...state, historySearch: action.historySearch
 			};
-
+		// удаляю выбранный город из истории поиска
 		case DELETE_CITY:
 			const newArrayWithoutDeleteCity = state.historySearch.filter(el => el.city !== action.city);
 			localStorage.setItem('historySearchLS', JSON.stringify([]));
 			localStorage.setItem('historySearchLS', JSON.stringify(newArrayWithoutDeleteCity));
 			return {
 				...state, historySearch: newArrayWithoutDeleteCity
+			};
+		case SEARCH_PAGE:
+			return {
+				...state, searchPage: action.searchPage
 			};
 
 		default:

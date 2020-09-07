@@ -60,7 +60,7 @@
 	flex-direction: column;
 	flex-wrap: nowrap;
 	overflow-x: auto;
-	height: 410px;
+	height: 600px;
 }
 
 .historyList::-webkit-scrollbar {
