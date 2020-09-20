@@ -25,7 +25,7 @@ export type historySearchType = {
 	city: any;
 	country: any;
 	temperature: any;
-}
+};
 
 type StateWeatherType = typeof initialState;
 
