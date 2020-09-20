@@ -96,13 +96,16 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 		} else {
 			historySearchLS = JSON.parse(localStorage.getItem('historySearchLS') || '[]');
 		}
+
 		// Создаю переменную для локал стореджа, делаю запрос за выбранным городом и запрос для дней недели
 		const data = await api.getWeather(city);
 		const weekWeather = await api.getWeekWeather(data.coord.lat, data.coord.lon);
+
 		// Создаю переменные для удобства обработки данных в дальнейшем
 		const sunrise = dateСonvertation(data.sys.sunrise);
 		const sunset = dateСonvertation(data.sys.sunset);
 		const dayTime = dateСonvertation(data.dt);
+		
 		// Создаю объект, что будет храниться в локал стейте
 		const newData = {
 			success: true,
@@ -133,13 +136,15 @@ export const getWeatherTC = (city: string) => async (dispatch: Dispatch) => {
 				tempMax: el.temp.max,
 				tempMin: el.temp.min
 			}
-		})
+		});
+
 		// Создаю объект для сохранения найденного города
 		const historySearchData = {
 			city: data.name,
 			country: data.sys.country,
 			temperature: Math.round(data.main.temp)
 		};
+
 		// Сохраняю данные в локалсторедж и запускаю три диспатча для обновления данных в иницализированном стейте
 		!historySearchLS ?
 			localStorage.setItem('historySearchLS', JSON.stringify([historySearchData])) :
