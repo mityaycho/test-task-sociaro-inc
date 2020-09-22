@@ -5,7 +5,7 @@ interface Iweather {
 	icon: string;
 	id: number;
 	main: string;
-}
+};
 
 type GetWeatherType = {
 	base: string;
