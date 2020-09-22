@@ -16,7 +16,6 @@ export const citiesReducer = (state: StateFindCitiesType = initialState, action:
 
 	switch (action.type) {
 		case FIND_CITIES:
-			console.log(action.findCities)
 			return {
 				...state, cities: [...action.findCities]
 			};
