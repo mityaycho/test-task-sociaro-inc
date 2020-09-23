@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import styles from './DayWeekContainer.module.css'
+import styles from './DayWeekContainer.module.css';
 import { WeekWeatherType } from '../../redux/weather-reducer';
 import DayWeek from './DayWeek/DayWeek';
 import { v4 as uuidv4 } from 'uuid';
