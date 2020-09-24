@@ -10,7 +10,7 @@ const DayWeek = React.memo((props: any) => {
 	const day = props.day;
 	const dayName = dateСonvertation(day.dt);
 	const dayWeek = dayName.day.split('').slice(0, 3).join('');
-	const dateDay = dayName.numberOfMonths
+	const dateDay = dayName.numberOfMonths;
 
 	let iconSrc;
 	switch (day.weather) {
