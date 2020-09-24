@@ -3,7 +3,7 @@ import styles from './SelectedCity.module.css';
 import geoTag from './../../assets/images/geo-tag.png';
 import { useSelector, useDispatch } from 'react-redux';
 import WeatherCard from '../WeatherCard/WeatherCard';
-import preloaderIMG from './../../assets/images/preloader.gif'
+import preloaderIMG from './../../assets/images/preloader.gif';
 import { dateСonvertation } from '../../assets/reusableJS';
 import { v4 as uuidv4 } from 'uuid';
 import DayWeekContainer from '../DayWeekContainer/DayWeekContainer';
