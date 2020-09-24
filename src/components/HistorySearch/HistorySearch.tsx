@@ -17,7 +17,7 @@ const HistorySearch = React.memo((props: any) => {
 	const historySearch = useSelector((state: any) => state.weatherState.historySearch);
 	const findCities = useSelector((state: any) => state.citiesState.cities);
 	const [citySelected, setCitySelected] = useState('');
-	
+
 	// Ставлю на монтирование компонента обновление данных из локального стейта браузера и добавляю анимацию
 	useEffect(() => {
 		dispatch(historySearchAC(JSON.parse(localStorage.getItem('historySearchLS') || '[]')));
@@ -54,6 +54,7 @@ const HistorySearch = React.memo((props: any) => {
 			dispatch(getWeatherTC(e.target.dataset.city));
 			props.history.push('selectedCity');
 		}
+		
 		// Делаю проверку на кнопку удаления и пинаю санку, где всё обновляю
 		if (e.target.dataset.button === 'delete') {
 			dispatch(deleteHistoryCityAC(e.currentTarget.dataset.city));
